@@ -1,5 +1,18 @@
+@import "var";
+
+body {
+    color: $mainColor;
+    font-size: 14px;
+    line-height: 1.15;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.secondary-color {
+    color: $secondaryColor;
+}
+
 .width-limiter {
-    width: 980px;
+    max-width: 980px;
     position: relative;
     margin: 0 auto;
 }

@@ -1,8 +1,26 @@
+@import "var";
+
 .header {
     height: 186px;
     background-image: url(./../i/bg-header.png);
     background-repeat: repeat-x;
     background-position: center 0;
+    position: relative;
+}
+
+.header__left-part {
+    float: left;
+    width: 310px;
+}
+
+.header__center-part {
+    float: left;
+    width: 452px;
+}
+
+.header__right-part {
+    float: right;
+    width: 210px;
 }
 
 .header__logo {
@@ -10,8 +28,8 @@
     background-repeat: no-repeat;
     width: 250px;
     height: 97px;
-    float: left;
-    margin: 26px 0 0 31px;
+    display: block;
+    margin: 26px auto 4px;
 }
 
 .header__slogan {
@@ -19,11 +37,8 @@
     font-size: 13px;
     line-height: 15px;
     text-transform: uppercase;
-    float: left;
-    clear: left;
-    margin: 4px 0 0 1px;
+    display: block;
     letter-spacing: -0.5px;
-    width: 320px;
     text-align: center;
     font-weight: normal;
 }
@@ -34,5 +49,117 @@
     &:hover {
         text-decoration: none;
     }
+}
 
+.header-search {
+    display: block;
+    width: 360px;
+    margin: 41px auto 0;
+}
+
+.header-search__input {
+    background-color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 26px;
+    display: block;
+    border: 1px solid #dcdcdc;
+    padding: 7px 39px 5px 17px;
+    width: 100%;
+    box-sizing: border-box;
+    background-image: url(./../i/search.svg);
+    background-repeat: no-repeat;
+    background-position: 326px 9px;
+    background-size: 20px;
+}
+
+.header-work-time {
+    font-size: 16px;
+    text-align: center;
+    width: 400px;
+    margin: 26px auto 0;
+}
+
+.header-work-time__paragraph {
+    color: $secondaryColor;
+    font-weight: bold;
+    padding-bottom: 6px;
+}
+
+.header-work-time__time {
+    color: $mainColor;
+}
+
+.header__phone {
+    float: right;
+    clear: right;
+    text-align: right;
+    font-size: 17px;
+    line-height: 17px;
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+    background-size: 17px 17px;
+    padding-left: 26px;
+    padding-bottom: 11px;
+}
+
+.header__phone--velcom {
+    margin-top: 40px;
+    background-image: url(./../i/velcom.svg);
+}
+
+.header__social-block {
+    padding: 14px 49px 0 0;
+}
+
+.header__social-link {
+    float: right;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 26px;
+    height: 26px;
+    margin-left: 3px;
+}
+
+.header__social-link--vk {
+    background-image: url(./../i/vk.png);
+}
+
+.header__social-link--youtube {
+    background-image: url(./../i/youtube.png);
+}
+
+.header__social-link--instagram {
+    background-image: url(./../i/instagram.png);
+}
+
+.header__cart {
+    position: absolute;
+    right: 0;
+    bottom: -13px;
+    background-color: $mainColor;
+    color: $mainColorNegative;
+    text-decoration: underline;
+    font-size: 14px;
+    line-height: 23px;
+    min-width: 100px;
+    padding: 14px 7px 15px;
+    text-align: center;
+    cursor: pointer;
+
+    &:before {
+        content: '';
+        position: absolute;
+        background-image: url(./../i/cart.svg);
+        background-color: $secondaryColor;
+        left: -48px;
+        top: 0;
+        width: 48px;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 48% auto;
+        background-position: center 60%;;
+    }
+    &:hover {
+        text-decoration: none;
+    }
 }
