@@ -12,6 +12,7 @@ Released under the MIT license. http://opensource.736cs.com/licenses/mit
 html, body,
 h1, h2, h3, h4, h5, h6,
 form, label, input, textarea,
+header, footer, article,
 div, p, a, span, img {
     margin: 0;
     padding: 0;
