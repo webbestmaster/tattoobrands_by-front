@@ -1,10 +1,14 @@
 // utils
 @import "reset.css";
 
+// libs
+@import "./../../js/lib/idangerous.swiper.css";
+
 // my variables
 @import "var";
 @import "style";
 
 // components
 @import "header";
-
+@import "header-nav";
+@import "home-swiper";

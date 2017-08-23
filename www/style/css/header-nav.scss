@@ -1,0 +1,26 @@
+@import "var";
+
+.header-nav {
+    display: block;
+    text-align: center;
+    border: 1px solid #A7A7A7;
+    border-left: none;
+    border-right: none;
+    background-color: #E8E8E8;
+    line-height: 0;
+}
+
+.header-nav__link {
+    color: $mainColor;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    &:hover {
+        color: $secondaryColor;
+        text-decoration: underline;
+    }
+}
