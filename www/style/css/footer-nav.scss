@@ -1,26 +1,24 @@
 @import "var";
 
-.header-nav {
+.footer-nav {
     display: block;
     text-align: center;
-    border: 1px solid #A7A7A7;
-    border-left: none;
-    border-right: none;
-    background-color: #E8E8E8;
+    padding: 0 10px 34px;
     line-height: 0;
-    padding: 0 10px;
 }
 
-.header-nav__link {
+.footer-nav__link {
     color: $mainColor;
     display: inline-block;
     text-decoration: none;
     font-size: 14px;
     line-height: 14px;
-    padding: 10px 19px;
+    padding: 10px 0 1px;
+    margin: 0 19px;
     text-align: center;
     text-transform: uppercase;
+    border-bottom: 1px solid transparent;
     &:hover {
-        color: $secondaryColor;
+        border-bottom-color: $mainColor;
     }
 }

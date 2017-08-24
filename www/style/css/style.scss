@@ -17,3 +17,10 @@ body {
     position: relative;
     margin: 0 auto;
 }
+
+@media only screen and (max-width: 1023px) { // 1023 AND little
+    .width-limiter {
+        max-width: 1000px; // 980 +
+        padding: 0 10px; // + 10 * 2
+    }
+}
