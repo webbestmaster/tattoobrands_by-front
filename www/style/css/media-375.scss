@@ -1,5 +1,5 @@
-// main point
-@media only screen and (max-width: 367px) { // 367 AND little
+@import "var";
+@media only screen and (max-width: $mediaPhone) { // 367 AND little
     body {
         background-color: #cc0;
     }

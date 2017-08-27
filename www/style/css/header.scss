@@ -5,7 +5,6 @@
     background-image: url(./../i/bg-header.png);
     background-repeat: repeat-x;
     background-position: center 0;
-    position: relative;
     background-color: $mainBgColor;
 }
 
@@ -15,13 +14,14 @@
 }
 
 .header__center-part {
-    float: left;
+    float: none;
     width: 452px;
+    margin: 0 200px 0 310px;
 }
 
 .header__right-part {
     float: right;
-    width: 210px;
+    width: 200px;
 }
 
 .header__logo {
@@ -55,7 +55,8 @@
 .header-search {
     display: block;
     width: 360px;
-    margin: 41px auto 0;
+    padding-top: 41px;
+    margin: 0 auto;
 }
 
 .header-search__input {
@@ -109,7 +110,7 @@
 }
 
 .header__social-block {
-    padding: 14px 49px 0 0;
+    padding: 14px 0 26px 0;
 }
 
 .header__social-link {
@@ -134,18 +135,17 @@
 }
 
 .header__cart {
-    position: absolute;
-    right: 0;
-    bottom: -13px;
     background-color: $mainColor;
     color: $mainColorNegative;
     text-decoration: underline;
     font-size: 14px;
     line-height: 23px;
     min-width: 100px;
+    float: right;
     padding: 14px 7px 15px;
     text-align: center;
     cursor: pointer;
+    position: relative;
 
     &:before {
         content: '';

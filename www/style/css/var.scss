@@ -3,6 +3,12 @@ $mainColorNegative: #ddd;
 $secondaryColor: #bf2622;
 $mainBgColor: #f6f6f6;
 
+// media queries
+$mediaLaptop: 999px;
+$mediaTablet: 767px;
+$mediaPhone: 367px;
+$mediaSmall: 319px;
+
 .clear {
     clear: both;
 }
@@ -26,8 +32,13 @@ $mainBgColor: #f6f6f6;
 
 .width-limiter {
     max-width: 980px;
-    position: relative;
     margin: 0 auto;
+}
+
+@media only screen and (max-width: $mediaLaptop) { // 999 AND little
+    .width-limiter {
+        margin: 0 10px;
+    }
 }
 
 .hidden {

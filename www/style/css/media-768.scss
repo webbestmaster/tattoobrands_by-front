@@ -1,5 +1,5 @@
-// main point
-@media only screen and (max-width: 767px) { // 767 AND little
+@import "var";
+@media only screen and (max-width: $mediaTablet) { // 767 AND little
     body {
         background-color: #0c0;
     }

@@ -1,4 +1,5 @@
-@media only screen and (max-width: 319px) { // 367 AND little
+@import "var";
+@media only screen and (max-width: $mediaSmall) { // 319 AND little
     body {
         background-color: #c0c;
     }
