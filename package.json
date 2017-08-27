@@ -21,7 +21,8 @@
     "url": "https://github.com/webbestmaster/canned-fish-front/issues"
   },
   "homepage": "https://github.com/webbestmaster/canned-fish-front#readme",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.24.1",

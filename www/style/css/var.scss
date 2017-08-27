@@ -19,3 +19,17 @@ $mainBgColor: #f6f6f6;
     @extend .clear;
     @extend .clear-self;
 }
+
+.secondary-color {
+    color: $secondaryColor;
+}
+
+.width-limiter {
+    max-width: 980px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
