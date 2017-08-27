@@ -3,4 +3,22 @@
     body {
         background-color: #c00;
     }
+
+    .header__left-part {
+        width: auto;
+    }
+
+    .header__center-part {
+        margin-left: 270px;
+    }
+
+    .footer__left-part,
+    .footer__full-line {
+        display: none;
+    }
+
+    .footer__center-part {
+        margin-left: 0;
+        margin-right: 380px;
+    }
 }

@@ -14,8 +14,7 @@
 }
 
 .header__center-part {
-    float: none;
-    width: 452px;
+    max-width: 452px;
     margin: 0 200px 0 310px;
 }
 
@@ -37,7 +36,6 @@
     color: #878484;
     font-size: 13px;
     line-height: 15px;
-    text-transform: uppercase;
     display: block;
     letter-spacing: -0.5px;
     text-align: center;
@@ -54,9 +52,10 @@
 
 .header-search {
     display: block;
-    width: 360px;
+    max-width: 360px;
     padding-top: 41px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header-search__input {
@@ -68,16 +67,25 @@
     padding: 7px 39px 5px 17px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.header-search__icon {
     background-image: url(./../i/search.svg);
     background-repeat: no-repeat;
-    background-position: 326px 9px;
+    background-position: 7px 10px;
     background-size: 20px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
 }
 
 .header-work-time {
     font-size: 16px;
     text-align: center;
-    width: 400px;
+    max-width: 400px;
     margin: 26px auto 0;
 }
 
