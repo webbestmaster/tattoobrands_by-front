@@ -1,6 +1,92 @@
 @import "var";
+
 @media only screen and (max-width: $mediaTablet) { // 767 AND little
     body {
         background-color: #0c0;
     }
+
+    .header {
+        background-image: none;
+        height: auto;
+    }
+
+    .header__left-part {
+        width: 97px;
+        height: 77px;
+    }
+
+    .header__logo {
+        background-size: 100% auto;
+        background-position: center center;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .header__slogan {
+        display: none;
+    }
+
+    .header__right-part {
+        display: block;
+    }
+
+    .header__phone--velcom {
+        margin-top: 22px;
+    }
+
+    .header__cart {
+        font-size: 13px;
+        padding: 8px 7px 9px;
+        &:before {
+            background-size: 40% auto;
+            background-position: center 56%;
+        }
+    }
+
+    .header__social-block {
+        display: none;
+    }
+
+    .header__center-part {
+        display: none;
+    }
+
+    .footer__full-line {
+        display: none;
+    }
+
+    .footer__center-part {
+        margin: 0;
+
+        .w50 {
+            width: auto;
+            float: none;
+        }
+
+        .footer__nav_link {
+            float: none;
+            display: block;
+        }
+    }
+
+    .footer__right-part {
+        float: none;
+        width: auto;
+        text-align: center;
+        padding-bottom: 24px;
+
+        .footer-paragraph--type-2 {
+            margin: 0;
+        }
+
+        .secondary-color {
+            display: block;
+        }
+    }
+
+    .footer {
+        padding-top: 24px;
+    }
+
 }
