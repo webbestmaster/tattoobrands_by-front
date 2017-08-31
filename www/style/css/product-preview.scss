@@ -1,0 +1,88 @@
+@import "var";
+@import "helper";
+
+.products-preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 13px;
+}
+
+.product-preview {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 277px;
+    text-decoration: none;
+    color: $mainColor;
+    margin: 25px 5px 20px;
+    padding-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    border-bottom: 1px solid $mainColor;
+    &:hover {
+        background-color: $mainBgColor;
+        border-bottom-color: $mainBgColor;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        .product-preview__name {
+            background-color: $mainBgColor;
+            text-decoration: underline;
+            transform: translate3d(0, -131px, 0);
+        }
+        .product-preview__image {
+            transform: translate3d(0, -50px, 0);
+        }
+        .product-preview__description {
+            opacity: 1;
+            transform: translate3d(0, 123px, 0);
+        }
+        .product-preview__price {
+            transform: translate3d(0, 3px, 0);
+        }
+    }
+}
+
+.product-preview__image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease-out;
+    background-position: center center;
+    background-size: cover;
+}
+
+.product-preview__name {
+    font-size: 13px;
+    line-height: 17px;
+    padding: 10px 15px;
+    height: 26px;
+    font-weight: bold;
+    transition: all 0.3s ease-out;
+    @include line-cap(2);
+}
+
+.product-preview__description {
+    padding: 0 15px;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 120%, 0);
+    transition: all 0.3s ease-out;
+    height: 138px;
+    background-color: $mainBgColor;
+    font-size: 13px;
+    line-height: 17px;
+    @include line-cap(8);
+}
+
+.product-preview__price {
+    font-size: 14px;
+    line-height: 14px;
+    color: $secondaryColor;
+    position: absolute;
+    left: 15px;
+    bottom: 11px;
+    transition: all 0.3s ease-out;
+}

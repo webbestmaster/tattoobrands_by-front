@@ -1,0 +1,26 @@
+@mixin prefix-key($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$prefix + $property}: $value;
+    }
+}
+
+@mixin prefix-value($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$property}: #{$prefix + $value};
+    }
+}
+
+@mixin prefix-key-value($property, $value) {
+    @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$prefix + $property}: #{$prefix + $value};
+    }
+}
+
+@mixin line-cap($line) {
+    @include prefix-key(line-clamp, $line);
+    @include prefix-key(box-orient, vertical);
+    @include prefix-value(display, box);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}

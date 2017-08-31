@@ -5,6 +5,10 @@
     overflow: hidden;
     height: 1px; // will set normal size by js, do not use 0px, 0px -=> bug with slides. extra left padding
     position: relative;
+    transition: background-color 0.3s ease-out;
+    &:hover {
+        background-color: $mainBgColor;
+    }
 }
 
 .home-swiper__slide {
