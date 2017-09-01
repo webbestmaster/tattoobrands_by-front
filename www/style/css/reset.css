@@ -19,12 +19,13 @@ div, p, a, span, img {
     border: 0;
     outline: 0;
     font-size: 100%;
-    vertical-align: baseline;
+    vertical-align: middle;
     background: transparent;
 }
 
-input, select, a, img {
-    vertical-align: middle;
+input {
+    border-radius: 0; /* fix for ios */
+    -webkit-appearance: none; /* fix for ios */
 }
 
 /*

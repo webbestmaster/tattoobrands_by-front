@@ -100,6 +100,8 @@
 }
 
 .header__phone {
+    color: $mainColor;
+    text-decoration: none;
     float: right;
     clear: right;
     text-align: right;
