@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/webbestmaster/canned-fish-front#readme",
   "dependencies": {
+    "fastclick": "^1.0.6"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
