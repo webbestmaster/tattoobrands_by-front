@@ -21,6 +21,7 @@ div, p, a, span, img {
     font-size: 100%;
     vertical-align: middle;
     background: transparent;
+    -webkit-tap-highlight-color:  transparent;
 }
 
 input {

@@ -20,6 +20,7 @@
     overflow: hidden;
     transition: all 0.3s ease-out;
     border-bottom: 1px solid $mainColor;
+    background-color: #fff;
     &:hover {
         background-color: $mainBgColor;
         border-bottom-color: $mainBgColor;
