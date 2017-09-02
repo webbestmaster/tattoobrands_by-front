@@ -1,13 +1,27 @@
 @import "var";
 
+$footerTopPadding: 32px;
+
 .footer {
     //height: 117px;
-    background-image: url(./../i/bg-footer.png);
-    background-repeat: repeat-x;
-    background-position: center 0;
+    position: relative;
     border-bottom: solid 3px $secondaryColor;
     background-color: $mainBgColor;
-    padding: 32px 0 17px;
+    padding: $footerTopPadding 0 17px;
+    z-index: 0;
+    &:before {
+        transform: scaleY(-1);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: -$footerTopPadding;
+        width: 100%;
+        height: 100%;
+        background-image: url(./../i/big-bg.png);
+        background-repeat: repeat-x;
+        background-position: center 0;
+        z-index: -1;
+    }
 }
 
 .footer__left-part {
