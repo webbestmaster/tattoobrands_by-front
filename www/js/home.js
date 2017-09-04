@@ -1,6 +1,6 @@
 /* global document */
 const Swiper = require('./lib/idangerous.swiper');
-// const $ = require('jbone');
+const $ = require('jquery');
 
 module.exports.initSwiper = () => {
     function onSwiperResize(swiper) {
@@ -34,3 +34,32 @@ module.exports.initSwiper = () => {
 
     console.log('swiper is here ->', homeSwiper);
 };
+
+module.exports.initPagination = () => {
+    const {indexPagination} = window.app;
+
+    if (!indexPagination) {
+        console.log('no app.indexPagination');
+        return;
+    }
+
+    const {totalPages, startPage} = indexPagination;
+    const {location} = window;
+
+    $('.js-index-pagination').twbsPagination({
+        totalPages,
+        startPage,
+
+        initiateStartPageClick: false,
+        visiblePages: 5,
+
+        prev: '&#8672;',
+        next: '&#8674;',
+
+        first: '&#8676;',
+        last: '&#8677;',
+
+        onPageClick: (evt, page) => Object.assign(location, {search: 'page=' + page})
+    });
+};
+

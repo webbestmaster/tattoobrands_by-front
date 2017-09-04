@@ -46,7 +46,7 @@
         ],
         "id-match": [
             1,
-            "^[a-zA-Z0-9_]+$",
+            "^[a-zA-Z0-9_$]+$",
             {
                 "onlyDeclarations": false,
                 "properties": true
@@ -165,7 +165,8 @@
                 "min": 3,
                 "max": 34,
                 "exceptions": [
-                    "ii"
+                    "ii",
+                    "$"
                 ]
             }
         ],

@@ -1,0 +1,39 @@
+@import "var";
+
+.pagination-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pagination {
+    list-style: none;
+    display: block;
+}
+
+.pagination .page-item {
+    float: left;
+}
+
+.pagination .page-link {
+    display: block;
+    color: $mainColor;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.pagination .active .page-link {
+    color: #fff;
+    background-color: $secondaryColor;
+}
+
+.pagination .disabled .page-link {
+    color: #9c9c9c;
+    cursor: not-allowed;
+    background-color: #fff;
+}
+
