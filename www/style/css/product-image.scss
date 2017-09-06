@@ -3,6 +3,11 @@
 .product-image {
     width: 320px;
     float: left;
+    .product--full-page & {
+        float: none;
+        width: 100%;
+        padding-bottom: 35px;
+    }
 }
 
 .product-swiper-wrapper { // see .home-swiper-wrapper {
@@ -12,6 +17,13 @@
     height: 1px; // will set normal size by js, do not use 0px, 0px -=> bug with slides. extra left padding
     position: relative;
     transition: background-color 0.3s ease-out;
+    cursor: zoom-in;
+
+    .product--full-page & {
+        cursor: zoom-out;
+    }
+
+    .product--full-page &,
     &:hover {
         background-color: $mainBgColor;
     }

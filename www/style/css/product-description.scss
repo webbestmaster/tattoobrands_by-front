@@ -4,6 +4,9 @@
 
 .product-description {
     margin-left: 354px;
+    .product--full-page & {
+        margin-left: 0;
+    }
 }
 
 .product-description__header {
