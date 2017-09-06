@@ -18,7 +18,7 @@ module.exports.initSwiper = () => {
         nodes.forEach(node => Object.assign(node.style, {height: neededHeightPx}));
     }
 
-    const homeSwiper = new Swiper('.js-home-swiper-wrapper.home-swiper-wrapper', {
+    const homeSwiper = new Swiper('.js-home-swiper-wrapper', {
         pagination: '.swiper-pagination',
         // nextButton: '.swiper-button-next',
         // prevButton: '.swiper-button-prev',
@@ -32,7 +32,7 @@ module.exports.initSwiper = () => {
         onAfterResize: onSwiperResize
     });
 
-    console.log('swiper is here ->', homeSwiper);
+    console.log('home swiper is here ->', homeSwiper);
 };
 
 module.exports.initPagination = () => {

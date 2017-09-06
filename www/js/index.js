@@ -7,9 +7,16 @@ const FastClick = require('fastclick');
 const $ = require('jquery');
 
 const homeScripts = require('./home');
+const productScripts = require('./product');
 
 $(() => {
+    // main part
     new FastClick(document.body); // eslint-disable-line no-new
+
+    // home
     homeScripts.initSwiper();
     homeScripts.initPagination();
+
+    // product
+    productScripts.initSwiper();
 });
