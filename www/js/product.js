@@ -3,7 +3,7 @@ const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 
 module.exports.initSwiper = () => {
-    const swiperWrapper = document.querySelector('.js-product-swiper-wrapper');
+    const swiperWrapperSelector = '.js-product-swiper-wrapper';
 
     function onSwiperResize(swiper) {
         const {wrapper, container, slides} = swiper;
@@ -13,7 +13,7 @@ module.exports.initSwiper = () => {
         nodes.forEach(node => Object.assign(node.style, {height: size}));
     }
 
-    const productSwiper = new Swiper(swiperWrapper, {
+    const productSwiper = new Swiper(swiperWrapperSelector, {
         pagination: '.swiper-pagination',
         // nextButton: '.swiper-button-next',
         // prevButton: '.swiper-button-prev',
@@ -28,7 +28,7 @@ module.exports.initSwiper = () => {
         onAfterResize: onSwiperResize
     });
 
-    $(swiperWrapper).on('dblclick', () => {
+    $(swiperWrapperSelector).on('dblclick', () => {
         $('.js-product').toggleClass('product--full-page');
         window.dispatchEvent(new Event('resize'));
     });
