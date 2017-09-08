@@ -3,7 +3,14 @@ const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 
 module.exports.initSwiper = () => {
-    const swiperWrapperSelector = '.js-product-swiper-wrapper';
+    const productSwiperImages = $('.js-product-swiper-img');
+    const productSwiperWrapper = $('.js-product-swiper-wrapper');
+
+    if (productSwiperImages.length <= 1) {
+        productSwiperWrapper.addClass('product-swiper-wrapper--one-image');
+        console.log('no product swiper, here is one image');
+        return;
+    }
 
     function onSwiperResize(swiper) {
         const {wrapper, container, slides} = swiper;
@@ -13,7 +20,7 @@ module.exports.initSwiper = () => {
         nodes.forEach(node => Object.assign(node.style, {height: size}));
     }
 
-    const productSwiper = new Swiper(swiperWrapperSelector, {
+    const productSwiper = new Swiper(productSwiperWrapper[0], {
         pagination: '.swiper-pagination',
         // nextButton: '.swiper-button-next',
         // prevButton: '.swiper-button-prev',
@@ -28,10 +35,13 @@ module.exports.initSwiper = () => {
         onAfterResize: onSwiperResize
     });
 
-    $(swiperWrapperSelector).on('dblclick', () => {
-        $('.js-product').toggleClass('product--full-page');
-        window.dispatchEvent(new Event('resize'));
-    });
-
     console.log('product swiper is here ->', productSwiper);
+};
+
+module.exports.initSwiperZoom = () => {
+    $('.js-product-swiper-wrapper')
+        .on('dblclick', () => {
+            $('.js-product').toggleClass('product--full-page');
+            window.dispatchEvent(new Event('resize'));
+        });
 };

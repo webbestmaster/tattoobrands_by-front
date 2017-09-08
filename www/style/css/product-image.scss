@@ -29,6 +29,22 @@
     }
 }
 
+.product-swiper-wrapper--one-image {
+    height: auto;
+
+    .swiper-slide {
+        float: none;
+    }
+
+    .product-swiper__img {
+        display: block;
+        position: static;
+        max-width: 100%;
+        margin: 0 auto;
+        transform: none;
+    }
+}
+
 .product-swiper__slide {
     position: relative;
 }

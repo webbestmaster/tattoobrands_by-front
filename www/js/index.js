@@ -19,4 +19,5 @@ $(() => {
 
     // product
     productScripts.initSwiper();
+    productScripts.initSwiperZoom();
 });
