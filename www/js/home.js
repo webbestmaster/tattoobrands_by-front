@@ -63,3 +63,6 @@ module.exports.initPagination = () => {
     });
 };
 
+module.exports.productReview = () => {
+    $('.js-product-preview').on('contextmenu', evt => evt.preventDefault());
+};

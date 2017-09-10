@@ -16,6 +16,7 @@ $(() => {
     // home
     homeScripts.initSwiper();
     homeScripts.initPagination();
+    homeScripts.productReview();
 
     // product
     productScripts.initSwiper();
