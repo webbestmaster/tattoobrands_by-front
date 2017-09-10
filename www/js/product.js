@@ -46,9 +46,29 @@ module.exports.initSwiper = () => {
 };
 
 module.exports.initSwiperZoom = () => {
-    $('.js-product-swiper-wrapper')
-        .on('dblclick', () => {
-            $('.js-product').toggleClass('product--full-page');
-            window.dispatchEvent(new Event('resize'));
-        });
+    const product = $('.js-product');
+    const win = window;
+    const fullPageClassName = 'product--full-page';
+
+    function onWindowResize() {
+        if (product.hasClass(fullPageClassName)) {
+            return;
+        }
+
+        if (win.document.documentElement.clientWidth < 980) {
+            product.addClass(fullPageClassName);
+            return;
+        }
+
+        product.removeClass(fullPageClassName);
+    }
+
+    onWindowResize();
+
+    $(win).on('resize', onWindowResize);
+
+    $('.js-product-swiper-wrapper').on('dblclick', () => {
+        product.toggleClass(fullPageClassName);
+        win.dispatchEvent(new Event('resize'));
+    });
 };
