@@ -1,7 +1,12 @@
 @import "var";
+
 @media only screen and (max-width: $mediaLaptop) { // 999 AND little
     body {
-        background-color: #c00;
+        //background-color: #c00;
+    }
+
+    .product {
+        padding-top: 12px;
     }
 
     .hidden-for-laptop {
