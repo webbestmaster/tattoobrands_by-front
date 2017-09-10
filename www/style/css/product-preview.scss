@@ -35,7 +35,7 @@
         }
         .product-preview__description {
             opacity: 1;
-            transform: translate3d(0, 123px, 0);
+            transform: translate3d(0, 122px, 0);
         }
         .product-preview__price {
             transform: translate3d(0, 3px, 0);
@@ -71,7 +71,7 @@
     left: 0;
     transform: translate3d(0, 120%, 0);
     transition: all 0.3s ease-out;
-    height: 138px;
+    height: 133px;
     background-color: $mainBgColor;
     font-size: 13px;
     line-height: 17px;
