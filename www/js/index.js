@@ -8,6 +8,7 @@ const $ = require('jquery');
 
 const homeScripts = require('./home');
 const productScripts = require('./product');
+const registrationScripts = require('./registration');
 
 $(() => {
     // main part
@@ -21,4 +22,7 @@ $(() => {
     // product
     productScripts.initSwiper();
     productScripts.initSwiperZoom();
+
+    // registration
+    registrationScripts.initRegistrationForm();
 });
