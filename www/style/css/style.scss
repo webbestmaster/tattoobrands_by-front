@@ -8,28 +8,9 @@ body {
     overflow-y: scroll;
 }
 
-.button {
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: bold;
+.page-header {
+    display: block;
     text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 12px 40px 11px;
-    background-image: linear-gradient(top, #ff4f4f, #b60605);
-    &:hover {
-        background-image: linear-gradient(top, #b60605, #ff4f4f);
-    }
-}
-
-.input-number {
-    font-size: 14px;
-    text-align: center;
-    line-height: 22px;
-    padding: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    text-indent: 15px;
-    width: 76px;
+    font-size: 20px;
+    padding-bottom: 20px;
 }

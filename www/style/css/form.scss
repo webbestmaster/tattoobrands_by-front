@@ -1,0 +1,65 @@
+.form {
+    display: block;
+    padding: 20px 0;
+}
+
+.label {
+    display: block;
+    padding-bottom: 14px;
+}
+
+.label__text {
+    font-size: 14px;
+    line-height: 22px;
+    float: left;
+    text-align: right;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px 10px 10px 0;
+}
+
+.input {
+    display: block;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.input--number {
+    text-align: center;
+    text-indent: 15px;
+    width: 76px;
+}
+
+.input--text {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 50%;
+    box-sizing: border-box;
+    width: 240px;
+}
+
+.button {
+    display: block;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 12px 40px 11px;
+    background-image: linear-gradient(top, #ff4f4f, #b60605);
+    &:hover {
+        background-image: linear-gradient(top, #b60605, #ff4f4f);
+    }
+}
+
+.button--right {
+    float: left;
+    max-width: 50%;
+    box-sizing: border-box;
+    margin-left: 50%;
+}

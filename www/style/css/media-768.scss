@@ -2,7 +2,7 @@
 
 @media only screen and (max-width: $mediaTablet) { // 767 AND little
     body {
-        //background-color: #0c0;
+        background-color: #0c0;
     }
 
     .hidden-for-tablet {
@@ -105,6 +105,23 @@
 
     .footer {
         padding-top: 24px;
+    }
+
+    .label__text {
+        text-align: center;
+        float: none;
+        width: auto;
+    }
+
+    .input--text {
+        margin: 0 auto;
+        max-width: initial;
+    }
+
+    .button--right {
+        margin: 0 auto;
+        float: none;
+        max-width: initial;
     }
 
 }
