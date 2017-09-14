@@ -6,6 +6,8 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0 10px 13px;
+    max-width: 1460px; // to show max 6 products in 1 row
+    margin: 0 auto;
 }
 
 .product-preview {
