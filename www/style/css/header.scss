@@ -113,12 +113,24 @@
 }
 
 .header__phone--velcom {
-    margin-top: 39px;
+    margin-top: 19px;
     background-image: url(./../i/velcom.svg);
 }
 
+.header__registration {
+    float: right;
+    font-size: 14px;
+    padding: 11px 0 1px;
+    text-decoration: none;
+    color: $secondaryColor;
+    border-bottom: 1px solid $secondaryColor;
+    &:hover {
+        border-bottom-color: transparent;
+    }
+}
+
 .header__social-block {
-    padding: 14px 0 26px 0;
+    padding: 9px 0 22px;
 }
 
 .header__social-link {
