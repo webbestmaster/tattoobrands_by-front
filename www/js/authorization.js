@@ -51,7 +51,7 @@ function showError({id}) { // eslint-disable-line complexity
 }
 
 module.exports.initAuthorizationForm = () => {
-    $('.js-registration-form')
+    $('.js-authorization-form')
         .on('submit', evt => evt.preventDefault());
 
     $('.js-login')
@@ -59,7 +59,7 @@ module.exports.initAuthorizationForm = () => {
             $.ajax({
                 type: 'post',
                 url: '/api/login/',
-                data: $('.js-registration-form').serialize(), // serializes the form's elements.
+                data: $('.js-authorization-form').serialize(), // serializes the form's elements.
                 success: data => {
                     if (data.hasOwnProperty('error')) {
                         showError(data.error);
@@ -80,7 +80,7 @@ module.exports.initAuthorizationForm = () => {
             $.ajax({
                 type: 'post',
                 url: '/api/registration/',
-                data: $('.js-registration-form').serialize(), // serializes the form's elements.
+                data: $('.js-authorization-form').serialize(), // serializes the form's elements.
                 success: data => {
                     if (data.hasOwnProperty('error')) {
                         showError(data.error);
