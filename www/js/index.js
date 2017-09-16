@@ -9,6 +9,7 @@ const $ = require('jquery');
 const homeScripts = require('./home');
 const productScripts = require('./product');
 const authorizationScripts = require('./authorization');
+const basketScripts = require('./basket');
 
 $(() => {
     // main part
@@ -26,4 +27,7 @@ $(() => {
 
     // authorization
     authorizationScripts.initAuthorizationForm();
+
+    // basket
+    basketScripts.initBasket();
 });

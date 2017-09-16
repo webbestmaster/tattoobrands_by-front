@@ -2,7 +2,7 @@
 const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 
-import {loadImages} from './helper/image';
+const {loadImages} = require('./helper/image');
 
 module.exports.initSwiper = () => {
     const productSwiperImages = $('.js-product-swiper-img');
@@ -74,18 +74,25 @@ module.exports.initSwiperZoom = () => {
 };
 
 module.exports.initAddToBasketForm = () => {
-    const form = $('.js-add-to-basket-form');
+    const win = window;
 
-    if (!form.length) {
+    win.app = win.app || {};
+
+    const {app} = win;
+    const {product = null} = app;
+
+    if (!product) {
         console.log('no add to basket form');
         return;
     }
 
+    const form = $('.js-add-to-basket-form');
+
     form.on('submit', evt => {
         evt.preventDefault();
 
-        const count = form.find('.js-count').val();
+        const {basket} = app;
 
-        console.log(count);
+        basket.change(product, Number(form.find('.js-count').val()));
     });
 };

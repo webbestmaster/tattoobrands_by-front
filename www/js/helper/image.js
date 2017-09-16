@@ -1,6 +1,6 @@
 /* global Image */
 
-export function loadImage(src) {
+function loadImage(src) {
     return new Promise((resolve, reject) => {
         const image = new Image();
 
@@ -21,6 +21,9 @@ export function loadImage(src) {
     });
 }
 
-export function loadImages(imageSrcList) {
+function loadImages(imageSrcList) {
     return Promise.all(imageSrcList.map(loadImage));
 }
+
+module.exports.loadImage = loadImage;
+module.exports.loadImages = loadImages;
