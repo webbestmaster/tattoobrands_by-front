@@ -10,6 +10,7 @@ const homeScripts = require('./home');
 const productScripts = require('./product');
 const authorizationScripts = require('./authorization');
 const basketScripts = require('./basket');
+const cartScripts = require('./cart');
 
 $(() => {
     // main part
@@ -30,4 +31,7 @@ $(() => {
 
     // basket
     basketScripts.initBasket();
+
+    // cart
+    cartScripts.initCartTable();
 });
