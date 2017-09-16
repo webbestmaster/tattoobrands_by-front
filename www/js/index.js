@@ -22,6 +22,7 @@ $(() => {
     // product
     productScripts.initSwiper();
     productScripts.initSwiperZoom();
+    productScripts.initAddToBasketForm();
 
     // authorization
     authorizationScripts.initAuthorizationForm();

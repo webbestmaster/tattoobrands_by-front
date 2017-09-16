@@ -72,3 +72,20 @@ module.exports.initSwiperZoom = () => {
         win.dispatchEvent(new Event('resize'));
     });
 };
+
+module.exports.initAddToBasketForm = () => {
+    const form = $('.js-add-to-basket-form');
+
+    if (!form.length) {
+        console.log('no add to basket form');
+        return;
+    }
+
+    form.on('submit', evt => {
+        evt.preventDefault();
+
+        const count = form.find('.js-count').val();
+
+        console.log(count);
+    });
+};
