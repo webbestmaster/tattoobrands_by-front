@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
+    "build-win": "SET NODE_ENV=production& webpack",
     "start": "webpack --progress",
     "start-dev-server": "webpack-dev-server --content-base ../tattoobrands_by/public/dist/ --host 0.0.0.0 --progress --no-inline",
     "lint": "eslint .",

@@ -39,7 +39,9 @@ const autoprefixerOptions = {
     ]
 };
 
-const styleLoaders = ['css-loader', 'autoprefixer-loader?' + JSON.stringify(autoprefixerOptions), 'sass-loader'];
+const styleLoaders = ['css-loader?' + JSON.stringify({minimize: true}),
+    'autoprefixer-loader?' + JSON.stringify(autoprefixerOptions),
+    'sass-loader'];
 
 const definePluginParams = {
     NODE_ENV: JSON.stringify(NODE_ENV),
