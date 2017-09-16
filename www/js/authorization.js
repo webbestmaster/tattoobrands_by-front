@@ -51,16 +51,45 @@ function showError({id}) { // eslint-disable-line complexity
     }
 }
 
+function checkInput(input) {
+    const {value} = input;
+
+    if (input.hasAttribute('required') && !value) {
+        return false;
+    }
+
+    const pattern = input.getAttribute('pattern');
+
+    if (!pattern) {
+        return true;
+    }
+
+    const regExp = new RegExp(pattern);
+
+    return regExp.test(value);
+}
+
+function checkForm(form) {
+    const inputs = Array.prototype.slice.call(form.find('input')); // eslint-disable-line prefer-reflect
+
+    return inputs.every(checkInput);
+}
+
 module.exports.initAuthorizationForm = () => {
-    $('.js-authorization-form')
-        .on('submit', evt => evt.preventDefault());
+    const form = $('.js-authorization-form');
+
+    form.on('submit', evt => evt.preventDefault());
 
     $('.js-login')
         .on('click', () => {
+            if (!checkForm(form)) {
+                return;
+            }
+
             $.ajax({
                 type: 'post',
                 url: '/api/login/',
-                data: $('.js-authorization-form').serialize(), // serializes the form's elements.
+                data: form.serialize(), // serializes the form's elements.
                 success: data => {
                     if (data.hasOwnProperty('error')) {
                         showError(data.error);
@@ -74,10 +103,14 @@ module.exports.initAuthorizationForm = () => {
 
     $('.js-register')
         .on('click', () => {
+            if (!checkForm(form)) {
+                return;
+            }
+
             $.ajax({
                 type: 'post',
                 url: '/api/registration/',
-                data: $('.js-authorization-form').serialize(), // serializes the form's elements.
+                data: form.serialize(), // serializes the form's elements.
                 success: data => {
                     if (data.hasOwnProperty('error')) {
                         showError(data.error);
