@@ -172,6 +172,7 @@
     text-align: center;
     cursor: pointer;
     position: relative;
+    min-height: 23px;
 
     &:before {
         content: '';
@@ -189,4 +190,17 @@
     &:hover {
         text-decoration: none;
     }
+}
+
+.header__cart-counter {
+    position: absolute;
+    left: -10px;
+    top: -9px;
+    padding: 3px 4px 3px 6px;
+    font-size: 10px;
+    line-height: 10px;
+    background-color: $secondaryColor;
+    font-family: $monospaceFontFamily;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }

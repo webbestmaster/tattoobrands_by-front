@@ -3,8 +3,10 @@ const LS_ITEM = 'my-basket';
 const find = require('lodash/find');
 
 class Basket {
-    constructor() {
+    constructor(data) {
         const basket = this;
+
+        basket.initialData = data;
 
         basket.loadSaved();
     }
@@ -31,6 +33,35 @@ class Basket {
         };
 
         localStorage.setItem(LS_ITEM, JSON.stringify(data));
+
+        // update html basket
+        const fullPrice = basket.getFullPrice();
+        const fullCount = basket.getFullCount();
+        const {wrapper, counter, postfix, empty} = basket.initialData;
+
+        if (fullPrice > 0) {
+            counter.classList.remove('hidden');
+            counter.innerHTML = fullCount;
+            wrapper.innerHTML = fullPrice + postfix;
+        } else {
+            counter.classList.add('hidden');
+            counter.innerHTML = 0;
+            wrapper.innerHTML = empty;
+        }
+    }
+
+    getFullPrice() {
+        const basket = this;
+        const items = basket.getItems();
+
+        return items.reduce((accumulator, item) => accumulator + item.count * item.price, 0);
+    }
+
+    getFullCount() {
+        const basket = this;
+        const items = basket.getItems();
+
+        return items.reduce((accumulator, item) => accumulator + item.count, 0);
     }
 
     getItems() {
