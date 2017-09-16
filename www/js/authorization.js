@@ -1,8 +1,9 @@
+/* global document, location, setTimeout */
 const $ = require('jquery');
 
 function showError({id}) { // eslint-disable-line complexity
     const style = 'snackbar';
-    const timeout = 6000;
+    const timeout = 6e3;
 
     switch (id) {
         case 'no-needed-data':
@@ -66,11 +67,7 @@ module.exports.initAuthorizationForm = () => {
                         return;
                     }
 
-                    $.snackbar({
-                        content: 'Вход прошёл успешно!', // text of the snackbar
-                        style: 'snackbar', // add a custom class to your snackbar
-                        timeout: 6000// time in milliseconds after the snackbar autohides, 0 is disabled
-                    });
+                    location.href = document.referrer || location.origin;
                 }
             });
         });
@@ -90,7 +87,7 @@ module.exports.initAuthorizationForm = () => {
                     $.snackbar({
                         content: 'Регистрация прошла успешно!', // text of the snackbar
                         style: 'snackbar', // add a custom class to your snackbar
-                        timeout: 3000// time in milliseconds after the snackbar autohides, 0 is disabled
+                        timeout: 3e3// time in milliseconds after the snackbar autohides, 0 is disabled
                     });
 
                     $('.js-login').click();
