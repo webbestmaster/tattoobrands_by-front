@@ -94,5 +94,11 @@ module.exports.initAddToBasketForm = () => {
         const {basket} = app;
 
         basket.change(product, Number(form.find('.js-count').val()));
+
+        $.snackbar({
+            content: 'Товар добавлен в корзину!', // text of the snackbar
+            style: 'snackbar', // add a custom class to your snackbar
+            timeout: 3e3// time in milliseconds after the snackbar autohides, 0 is disabled
+        });
     });
 };
