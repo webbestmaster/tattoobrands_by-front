@@ -40,24 +40,29 @@ class CartTable extends Component {
         }
 
         return <form>
-            <table>
-                <thead>
+            <table className="table">
+                <thead className="table__head">
                     <tr>
-                        <th>№</th>
-                        <th>Описание Товара</th>
-                        <th>Кол-во</th>
-                        <th>Цена (руб.)</th>
-                        <th>Сумма (руб.)</th>
-                        <th>X</th>
+                        <th className="table__th">№</th>
+                        <th className="table__th">Наименование товара</th>
+                        <th className="table__th">Кол-во</th>
+                        <th className="table__th">Цена (руб.)</th>
+                        <th className="table__th">Сумма (руб.)</th>
+                        <th className="table__th"/>
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map((product, ii) => <tr key={ii}>
-                        <td>{ii + 1}</td>
-                        <td>{product.images[0]} {product.name} {product.article} {product.slug}</td>
-                        <td>
+                    {items.map((product, ii) => <tr className="table__tr" key={ii}>
+                        <td className="table__td table__td--ta-center">{ii + 1}</td>
+                        <td className="table__td">
+                            <div className="table__product-image"
+                                style={{backgroundImage: 'url(' + product.images[0] + ')'}}/>
+                            <a href={'/product/' + product.slug} className="table__product-name">{product.name}</a>
+                            <p className="table__product-article">Артикул: {product.article}</p>
+                        </td>
+                        <td className="table__td">
                             <input
-                                className="input input--number"
+                                className="input input--number block-center"
                                 type="number"
                                 min="1"
                                 defaultValue={product.count}
@@ -66,13 +71,32 @@ class CartTable extends Component {
                                     view.onInputChange(product.slug, parseInt(evt.currentTarget.value, 10) || 1)}
                                 required/>
                         </td>
-                        <td>{product.price}</td>
-                        <td>{numberToMoney(product.count * product.price)}</td>
-                        <td><span onClick={evt => view.onInputChange(product.slug, 0)}>XXX</span></td>
+                        <td className="table__td table__td--ta-right">
+                            <span className="table__number">
+                                {numberToMoney(product.price)}
+                            </span>
+                        </td>
+                        <td className="table__td table__td--ta-right">
+                            <span className="table__number">
+                                {numberToMoney(product.count * product.price)}
+                            </span>
+                        </td>
+                        <td className="table__td">
+                            <span onClick={evt => view.onInputChange(product.slug, 0)} className="table__close" />
+                        </td>
                     </tr>)}
                     <tr>
-                        <td colSpan="3">Итого:</td>
-                        <td colSpan="3">{numberToMoney(window.app.basket.getFullPrice())}</td>
+                        <td colSpan="3">
+                            <span className="table__number bold">
+                                Итого:
+                            </span>
+                        </td>
+                        <td colSpan="2">
+                            <span className="table__number table__number--left bold">
+                                {numberToMoney(window.app.basket.getFullPrice())} руб.
+                            </span>
+                        </td>
+                        <td/>
                     </tr>
                 </tbody>
             </table>

@@ -41,8 +41,8 @@ $mediaTablet: 767px;
 }
 
 .width-limiter--big-padding {
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding-top: 150px;
+    padding-bottom: 150px;
 }
 
 /*
@@ -61,4 +61,12 @@ $mediaTablet: 767px;
 .w50 {
     float: left;
     width: 50%;
+}
+
+.block-center {
+    margin: 0 auto;
+}
+
+.bold {
+    font-weight: bold;
 }

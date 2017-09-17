@@ -12,6 +12,7 @@ Released under the MIT license. http://opensource.736cs.com/licenses/mit
 html, body,
 h1, h2, h3, h4, h5, h6,
 form, label, input, button, textarea,
+table, tbody, thead, th, td, tr,
 header, footer, article, ul, ol, li,
 div, p, a, span, img {
     margin: 0;
@@ -27,6 +28,11 @@ div, p, a, span, img {
 input {
     border-radius: 0; /* fix for ios */
     -webkit-appearance: none; /* fix for ios */
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 /*
@@ -100,10 +106,7 @@ abbr[title], dfn[title] {
 	cursor:help;
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+
 
 hr {
 	display: block;
