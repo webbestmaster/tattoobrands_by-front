@@ -103,7 +103,7 @@ class CartTable extends Component {
 
             <div className="buttons-wrapper">
                 <button className="button" onClick={() => history.back()}>продолжить покупки</button>
-                <button className="button">оформить заказ</button>
+                <a href="/ordering" className="button">оформить заказ</a>
             </div>
         </div>;
     }

@@ -1,6 +1,7 @@
 /* global document, location, setTimeout */
 const $ = require('jquery');
 const {checkForm} = require('./helper/form');
+const {getUrlQuery} = require('./my-lib/query-parameter');
 
 function showError({id}) { // eslint-disable-line complexity
     const style = 'snackbar';
@@ -73,7 +74,9 @@ module.exports.initAuthorizationForm = () => {
                         return;
                     }
 
-                    location.href = document.referrer || location.origin;
+                    const redirect = getUrlQuery().redirect;
+
+                    location.href = redirect || document.referrer || location.origin;
                 }
             });
         });
