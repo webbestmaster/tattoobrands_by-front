@@ -1,4 +1,4 @@
-/* global document */
+/* global document, history*/
 const React = require('react');
 const {Component} = React;
 const ReactDOM = require('react-dom');
@@ -39,7 +39,7 @@ class CartTable extends Component {
             return <h1>Корзина пуста</h1>;
         }
 
-        return <form>
+        return <div className="cart">
             <table className="table">
                 <thead className="table__head">
                     <tr>
@@ -101,9 +101,11 @@ class CartTable extends Component {
                 </tbody>
             </table>
 
-            <button>оформить заказ</button>
-            <div>назад</div>
-        </form>;
+            <div className="buttons-wrapper">
+                <button className="button" onClick={() => history.back()}>продолжить покупки</button>
+                <button className="button">оформить заказ</button>
+            </div>
+        </div>;
     }
 }
 

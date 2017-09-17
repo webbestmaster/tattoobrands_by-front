@@ -63,9 +63,11 @@
     }
 }
 
-.button--right {
-    float: left;
-    max-width: 50%;
-    box-sizing: border-box;
-    margin-left: 50%;
+.buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .button {
+        margin: 10px;
+    }
 }

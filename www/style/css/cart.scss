@@ -1,10 +1,16 @@
 @import "var";
 
+.cart {
+    overflow-y: auto;
+}
+
 .table {
     width: 100%;
+    min-width: 600px;
     font-size: 14px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    margin-bottom: 17px;
 
     .table__tr:nth-child(even) {
         background-color: #f1f1f1;

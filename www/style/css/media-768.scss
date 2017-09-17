@@ -118,10 +118,11 @@
         max-width: initial;
     }
 
-    .button--right {
-        margin: 0 auto;
-        float: none;
-        max-width: initial;
+    .buttons-wrapper {
+        display: block;
+        text-align: center;
+        .button {
+            display: inline-block;
+        }
     }
-
 }
