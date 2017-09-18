@@ -1,3 +1,5 @@
+@import "var";
+
 .form {
     display: block;
     padding: 20px 0;
@@ -26,11 +28,13 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     background-color: #fff;
+    resize: none;
+    font-family: $mainFontFamily;
 }
 
 .input:invalid {
-    border-color: #c00;
-    box-shadow: 0 0 10px #c00;
+    border-color: $secondaryColor;
+    box-shadow: 0 0 3px $secondaryColor;
 }
 
 .input--number {
