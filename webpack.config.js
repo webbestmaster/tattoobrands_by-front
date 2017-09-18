@@ -39,7 +39,7 @@ const autoprefixerOptions = {
     ]
 };
 
-const styleLoaders = ['css-loader?' + JSON.stringify({minimize: true}),
+const styleLoaders = ['css-loader?' + JSON.stringify({minimize: IS_PRODUCTION}),
     'autoprefixer-loader?' + JSON.stringify(autoprefixerOptions),
     'sass-loader'];
 

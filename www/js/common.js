@@ -11,6 +11,9 @@ Object.assign(window, {
 require('./lib/jquery.twbs-pagination');
 require('./lib/idangerous.swiper');
 require('./lib/snackbar');
+require('./my-lib/basket');
+require('./my-lib/format');
+require('./my-lib/query-parameter');
 require('lodash/find');
 require('react');
 require('react-dom');
