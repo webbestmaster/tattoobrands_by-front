@@ -53,6 +53,8 @@ function showError({id}) { // eslint-disable-line complexity
     }
 }
 
+module.exports.showError = showError;
+
 module.exports.initAuthorizationForm = () => {
     const form = $('.js-authorization-form');
 

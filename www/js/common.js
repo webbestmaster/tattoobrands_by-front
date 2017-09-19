@@ -14,6 +14,7 @@ require('./lib/snackbar');
 require('./my-lib/basket');
 require('./my-lib/format');
 require('./my-lib/query-parameter');
+require('./my-lib/jquery-extension');
 require('lodash/find');
 require('react');
 require('react-dom');
