@@ -12,6 +12,7 @@ const authorizationScripts = require('./authorization');
 const basketScripts = require('./basket');
 const cartScripts = require('./cart');
 const orderingScripts = require('./ordering');
+const orderScripts = require('./order');
 
 $(() => {
     // main part
@@ -38,4 +39,7 @@ $(() => {
 
     // ordering
     orderingScripts.initOrderForm();
+
+    // order
+    orderScripts.initOrderTable();
 });

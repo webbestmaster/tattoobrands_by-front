@@ -57,7 +57,7 @@ module.exports.initOrderForm = () => {
             .then(() => createOrder(orderingForm))
             .then(data => {
                 window.app.basket.clear();
-                Object.assign(location, {href: '/order/' + data.slug});
+                Object.assign(location, {href: '/order/' + data.slug + '?header=congratulation'});
             })
             .catch(showError);
     });
