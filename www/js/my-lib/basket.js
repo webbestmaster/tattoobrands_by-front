@@ -99,20 +99,18 @@ class Basket {
         this.setItems([]);
     }
 
-    /*
-        set(itemToSet, value) {
-            const basket = this;
-            const {slug} = itemToSet;
-            const items = basket.getItems();
-            const item = find(items, {slug});
+    set(itemToSet, value) {
+        const basket = this;
+        const {slug} = itemToSet;
+        const items = basket.getItems();
+        const item = find(items, {slug});
 
-            item.count = value;
+        item.count = value;
 
-            basket.removeZeroCount();
+        basket.removeZeroCount();
 
-            basket.save();
-        }
-    */
+        basket.save();
+    }
 
     removeZeroCount() {
         const basket = this;

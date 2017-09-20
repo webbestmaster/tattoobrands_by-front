@@ -5,15 +5,22 @@ const {showError} = require('./authorization');
 function createOrder(form) {
     return new Promise((resolve, reject) => {
         const serializedForm = form.serializeToJSON();
-        const products = window.app.basket.getItems()
-            .map(({slug, name, count}) => JSON.stringify({slug, name, count}));
+        const basketItems = window.app.basket.getItems();
+        const products = basketItems
+            .map(({slug, name, count}) => JSON.stringify({slug, name, count})
+                .replace(/":/g, '": ')
+                .replace(/^{|}$/g, '')
+                .replace(/",\s?"/g, '"; "')
+                .replace(/"([\S\s]+?)"/g, '$1')
+            );
 
         $.ajax({
             type: 'post',
             url: '/api/create-order',
             data: {
                 ...serializedForm,
-                products
+                products,
+                basketItems: JSON.stringify(basketItems)
             }, // serializes the form's elements.
             success: data => data.hasOwnProperty('error') ?
                 reject(data) :
