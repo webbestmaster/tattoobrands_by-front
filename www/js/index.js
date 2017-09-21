@@ -42,4 +42,5 @@ $(() => {
 
     // order
     orderScripts.initOrderTable();
+    orderScripts.initPdfOrder();
 });

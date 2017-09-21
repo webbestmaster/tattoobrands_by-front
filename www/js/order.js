@@ -1,8 +1,9 @@
-/* global document, history*/
+/* global document, history, navigator, URL, Blob, FormData*/
 const React = require('react');
 const {Component} = React;
 const ReactDOM = require('react-dom');
 const {numberToMoney} = require('./my-lib/format');
+const $ = require('jquery');
 
 window.app = window.app || {};
 
@@ -48,7 +49,7 @@ class OrderTable extends Component {
                     {items.map((product, ii) => <tr className="table__tr" key={ii}>
                         <td className="table__td table__td--ta-center">{ii + 1}</td>
                         <td className="table__td">
-                            <div className="table__product-image"
+                            <div className="table__product-image no-pdf"
                                 style={{backgroundImage: 'url(' + product.images[0] + ')'}}/>
                             <a href={'/product/' + product.slug} className="table__product-name">{product.name}</a>
                             <p className="table__product-article">Артикул: {product.article}</p>
@@ -56,7 +57,7 @@ class OrderTable extends Component {
                         <td className="table__td">
                             <input
                                 className="input input--number block-center"
-                                type="number"
+                                type="text"
                                 value={product.count}
                                 disabled/>
                         </td>
@@ -86,49 +87,19 @@ class OrderTable extends Component {
                 </tbody>
             </table>
 
-            <form className="form clear-self">
+            <div className="form clear-self">
                 <h2 className="page-header">Платёжный адрес</h2>
-                <label className="label">
-                    <p className="label__text">Имя:</p>
-                    <input className="input input--text" type="text" value={order.user.firstName} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Фамилия:</p>
-                    <input className="input input--text" type="text" value={order.user.lastName} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Телефон:</p>
-                    <input className="input input--text" type="text" value={order.phone} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Email:</p>
-                    <input className="input input--text" type="text" value={order.user.email} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Страна:</p>
-                    <input className="input input--text" type="text" value={order.country} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Область:</p>
-                    <input className="input input--text" type="text" value={order.region} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Город:</p>
-                    <input className="input input--text" type="text" value={order.town} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Адрес:</p>
-                    <textarea className="input input--text" rows="5" value={order.address} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Индекс:</p>
-                    <input className="input input--text" value={order.postcode} disabled/>
-                </label>
-                <label className="label">
-                    <p className="label__text">Пожелания к заказу:</p>
-                    <textarea className="input input--text" rows="5" value={order.additional} disabled/>
-                </label>
-            </form>
+                <p className="seo-text__paragraph">Имя: {order.user.firstName}</p>
+                <p className="seo-text__paragraph">Фамилия: {order.user.lastName}</p>
+                <p className="seo-text__paragraph">Телефон: {order.phone}</p>
+                <p className="seo-text__paragraph">Email: {order.user.email}</p>
+                <p className="seo-text__paragraph">Страна: {order.country}</p>
+                <p className="seo-text__paragraph">Область: {order.region}</p>
+                <p className="seo-text__paragraph">Город: {order.town}</p>
+                <p className="seo-text__paragraph">Адрес: {order.address}</p>
+                <p className="seo-text__paragraph">Индекс: {order.postcode}</p>
+                <p className="seo-text__paragraph">Пожелания к заказу: {order.additional}</p>
+            </div>
         </div>;
     }
 }
@@ -146,3 +117,43 @@ module.exports.initOrderTable = () => {
     );
 };
 
+module.exports.initPdfOrder = () => {
+    function saveFile(name, type, data) {
+        if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(new Blob([data], {type}), name);
+            return;
+        }
+
+        const url = URL.createObjectURL(new Blob([data], {type}));
+
+        const link = $('<a />', {
+            style: 'display: none',
+            href: url,
+            download: name
+        });
+
+        link[0].click();
+        URL.revokeObjectURL(url);
+    }
+
+    const pdfOrder = $('.js-pdf-order');
+    const cssClassBusy = 'pdf-order--busy';
+
+    pdfOrder.on('click', () => {
+        pdfOrder.addClass(cssClassBusy);
+
+        const form = new FormData();
+
+        form.append('html', $('.js-pdf')[0].innerHTML);
+
+        window
+            .fetch('/api/pdf-order', {
+                method: 'post',
+                body: form
+            })
+            .then(response => response.blob())
+            .then(myBlob => saveFile('file.pdf', 'octet/stream', myBlob))
+            .catch(evt => console.error(evt))
+            .then(() => pdfOrder.removeClass(cssClassBusy));
+    });
+};

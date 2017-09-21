@@ -111,3 +111,22 @@
         transform: translate(-50%, -50%) rotate(-45deg);
     }
 }
+
+.pdf-order {
+    background-image: url(./../i/save-as-pdf.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 54px;
+    height: 54px;
+    margin-top: -84px;
+    float: right;
+    cursor: pointer;
+    transition: 0.3s all ease-out;
+}
+
+.pdf-order--busy {
+    pointer-events: none;
+    background-image: url(./../i/spinner.gif);
+}
+
+
