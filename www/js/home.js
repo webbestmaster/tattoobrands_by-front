@@ -46,7 +46,14 @@ module.exports.initPagination = () => {
     const {totalPages, startPage} = indexPagination;
     const {location} = window;
 
-    $('.js-index-pagination').twbsPagination({
+    const paginationWrapper = $('.js-index-pagination');
+
+    if (totalPages === 1) {
+        paginationWrapper.remove();
+        return;
+    }
+
+    paginationWrapper.twbsPagination({
         totalPages,
         startPage,
 
