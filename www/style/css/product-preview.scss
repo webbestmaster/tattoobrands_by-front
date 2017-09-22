@@ -73,6 +73,7 @@
 }
 
 .product-preview__description {
+    width: 100%;
     padding: 0 15px;
     position: absolute;
     opacity: 0;
@@ -85,6 +86,7 @@
     background-color: $mainBgColor;
     font-size: 13px;
     line-height: 17px;
+    box-sizing: border-box;
     @include line-cap(8);
 }
 
