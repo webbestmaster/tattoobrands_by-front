@@ -36,7 +36,7 @@ class CartTable extends Component {
         const {items} = state;
 
         if (items.length === 0) {
-            return <h1>Корзина пуста</h1>;
+            return <h2 className="page-header">Корзина пуста</h2>;
         }
 
         return <div className="cart">

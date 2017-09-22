@@ -30,6 +30,10 @@ $mediaTablet: 767px;
     @extend .clear-self;
 }
 
+.monospace {
+    font-family: $monospaceFontFamily;
+}
+
 .secondary-color {
     color: $secondaryColor;
 }
