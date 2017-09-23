@@ -146,13 +146,22 @@ module.exports.initPdfOrder = () => {
 
         form.append('html', $('.js-pdf')[0].innerHTML);
 
+        const {app} = window;
+        const {order} = app;
+
         window
             .fetch('/api/pdf-order', {
                 method: 'post',
                 body: form
             })
             .then(response => response.blob())
-            .then(myBlob => saveFile('file.pdf', 'octet/stream', myBlob))
+            .then(myBlob => saveFile(
+                ('tattoobrands.by-' + order.slug + '-' + order.createdAtFormat + '.pdf')
+                    .replace(/\//gi, '-')
+                    .replace(/\s/gi, ''),
+                'octet/stream',
+                myBlob)
+            )
             .catch(evt => console.error(evt))
             .then(() => pdfOrder.removeClass(cssClassBusy));
     });

@@ -24,7 +24,7 @@ body {
     min-height: 100%;
     margin-bottom: -223px;
     &:after {
-        height: -223px;
+        height: 223px;
         content: '';
         display: block;
     }
