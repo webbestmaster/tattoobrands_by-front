@@ -30,4 +30,11 @@
         margin-left: 0;
         margin-right: 380px;
     }
+
+    .main-wrapper {
+        margin-bottom: -187px;
+        &:after {
+            height: 187px;
+        }
+    }
 }
