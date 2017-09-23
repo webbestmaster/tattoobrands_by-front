@@ -4,6 +4,7 @@ const {Component} = React;
 const ReactDOM = require('react-dom');
 const {numberToMoney} = require('./my-lib/format');
 const $ = require('jquery');
+const {browser} = require('./my-lib/browser');
 
 window.app = window.app || {};
 
@@ -136,8 +137,14 @@ module.exports.initPdfOrder = () => {
         URL.revokeObjectURL(url);
     }
 
+    if (browser.isIos()) {
+        return;
+    }
+
     const pdfOrder = $('.js-pdf-order');
     const cssClassBusy = 'pdf-order--busy';
+
+    pdfOrder.removeClass('hidden');
 
     pdfOrder.on('click', () => {
         pdfOrder.addClass(cssClassBusy);
