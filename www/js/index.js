@@ -13,10 +13,14 @@ const basketScripts = require('./basket');
 const cartScripts = require('./cart');
 const orderingScripts = require('./ordering');
 const orderScripts = require('./order');
+const headerScripts = require('./header-nav');
 
 $(() => {
     // main part
     new FastClick(document.body); // eslint-disable-line no-new
+
+    // main scripts
+    headerScripts.initHeaderNav();
 
     // home
     homeScripts.initSwiper();

@@ -17,7 +17,7 @@ class OrderTable extends Component {
         const {order} = app;
 
         view.state = {
-            order
+            order: JSON.parse(JSON.stringify(order))
         };
     }
 
