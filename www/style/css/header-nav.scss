@@ -24,3 +24,13 @@
         color: $secondaryColor;
     }
 }
+
+.header-nav__tab-wrapper {
+    left: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #c00;
+}
