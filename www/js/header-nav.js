@@ -14,12 +14,16 @@ class TabContent extends Component {
         const {category} = props;
         const {categories} = category;
 
+        if (categories.length === 0) {
+            return null;
+        }
+
         return <div className="header-nav__tab-wrapper">
-            <div className="width-limiter">
+            <div className="category-item__wrapper clear-self">
                 {categories.map(({image, displayName, name, slug}) =>
-                    <a href={'/category/' + slug} className="category-item">
-                        <h3>{displayName || name}</h3>
-                        <img src={image} alt={displayName || name}/>
+                    <a href={'/category/' + slug} className="category-item clear-self">
+                        <span className="category-item__image" style={{backgroundImage: 'url(' + image + ')'}}/>
+                        <p className="category-item__name">{displayName || name}</p>
                     </a>)}
             </div>
         </div>;
@@ -56,8 +60,7 @@ class HeaderNav extends Component {
         const view = this;
         const {state} = view;
         const {categoryTree} = state;
-        const activeCategory = find(categoryTree.categories, {slug: state.activeCategorySlug}) ||
-            categoryTree.categories.sort((category1, category2) => category1.order - category2.order)[0];
+        const activeCategory = find(categoryTree.categories, {slug: state.activeCategorySlug});
 
         return <div>
             {categoryTree.categories
@@ -68,10 +71,9 @@ class HeaderNav extends Component {
                     onMouseLeave={() => view.closeTabs()}
                     key={slug} className="header-nav__link">
                     {displayName || name}
+                    {activeCategory && activeCategory.slug === slug && <TabContent category={activeCategory}/>}
                 </a>)
             }
-
-            {activeCategory && <TabContent category={activeCategory}/>}
         </div>;
     }
 }
