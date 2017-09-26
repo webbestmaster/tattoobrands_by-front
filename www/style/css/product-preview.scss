@@ -2,11 +2,12 @@
 @import "helper";
 
 .products-preview {
+    @extend .width-limiter;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0 10px 13px;
-    max-width: 1460px; // to show max 6 products in 1 row
+    //max-width: 1220px; // to show max 5 products in 1 row
     margin: 0 auto;
 }
 

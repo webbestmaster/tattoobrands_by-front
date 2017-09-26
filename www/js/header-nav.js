@@ -66,7 +66,7 @@ class HeaderNav extends Component {
             {categoryTree.categories
                 .sort((category1, category2) => category1.order - category2.order)
                 .map(({displayName, name, slug}) => <a
-                    href={'/category/slug'}
+                    href={'/category/' + slug}
                     onMouseEnter={() => view.openTab(slug)}
                     onMouseLeave={() => view.closeTabs()}
                     key={slug} className="header-nav__link">
