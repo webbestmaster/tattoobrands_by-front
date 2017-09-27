@@ -5,8 +5,10 @@ const $ = require('jquery');
 module.exports.initSwiper = () => {
     function onSwiperResize(swiper) {
         // count height
-        const slideHeight = 261;
-        const slideWidth = 980;
+        // const slideHeight = 261;
+        // const slideWidth = 980;
+        const slideHeight = 325;
+        const slideWidth = 1220;
         const width = document.documentElement.clientWidth;
         const neededHeight = Math.min(Math.round(slideHeight * width / slideWidth), slideHeight);
         const neededHeightPx = neededHeight + 'px';
