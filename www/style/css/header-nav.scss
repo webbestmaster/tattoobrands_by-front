@@ -10,6 +10,12 @@
     position: relative;
 }
 
+.header-nav__sticky {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+}
+
 .header-nav__link {
     display: inline-block;
 }

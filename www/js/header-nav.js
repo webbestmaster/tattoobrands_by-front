@@ -43,7 +43,8 @@ class HeaderNav extends Component {
         view.state = {
             categoryTree: JSON.parse(JSON.stringify(categoryTree)),
             activeCategorySlug: null,
-            isNarrow: false
+            isNarrow: false,
+            wrapper: document.querySelector('.js-header-nav')
         };
     }
 
@@ -53,8 +54,22 @@ class HeaderNav extends Component {
         const {isNarrow} = state;
         const nextIsNarrow = nextState.isNarrow;
 
-        if (isNarrow !== nextIsNarrow) {
-            view.closeTabs();
+        if (isNarrow === nextIsNarrow) {
+            return;
+        }
+
+        view.closeTabs();
+    }
+
+    componentDidUpdate() {
+        const view = this;
+        const {state} = view;
+        const {wrapper, isNarrow} = state;
+
+        if (isNarrow) {
+            wrapper.classList.remove('header-nav__sticky');
+        } else {
+            wrapper.classList.add('header-nav__sticky');
         }
     }
 
@@ -67,8 +82,9 @@ class HeaderNav extends Component {
 
     onResize() {
         const view = this;
+        const isNarrow = document.documentElement.clientWidth < narrowWidth;
 
-        view.setState({isNarrow: document.documentElement.clientWidth < narrowWidth});
+        view.setState({isNarrow});
     }
 
     bindEvents() {
