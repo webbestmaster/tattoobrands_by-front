@@ -81,4 +81,7 @@
     .header-nav__link--narrow:nth-child(even) {
         background-color: #fff;
     }
+    .header-nav__link--narrow:hover {
+        background-color: #ccc;
+    }
 }
