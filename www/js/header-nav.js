@@ -7,6 +7,8 @@ const find = require('lodash/find');
 
 window.app = window.app || {};
 
+const narrowWidth = 767;
+
 class TabContent extends Component {
     render() {
         const view = this;
@@ -21,7 +23,7 @@ class TabContent extends Component {
         return <div className="header-nav__tab-wrapper">
             <div className="category-item__wrapper clear-self">
                 {categories.map(({image, displayName, name, slug}) =>
-                    <a href={'/category/' + slug} className="category-item clear-self">
+                    <a key={slug} href={'/category/' + slug} className="category-item clear-self">
                         <span className="category-item__image" style={{backgroundImage: 'url(' + image + ')'}}/>
                         <p className="category-item__name">{displayName || name}</p>
                     </a>)}
@@ -40,8 +42,39 @@ class HeaderNav extends Component {
 
         view.state = {
             categoryTree: JSON.parse(JSON.stringify(categoryTree)),
-            activeCategorySlug: null
+            activeCategorySlug: null,
+            isNarrow: false
         };
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        const view = this;
+        const {state} = view;
+        const {isNarrow} = state;
+        const nextIsNarrow = nextState.isNarrow;
+
+        if (isNarrow !== nextIsNarrow) {
+            view.closeTabs();
+        }
+    }
+
+    componentDidMount() {
+        const view = this;
+
+        view.bindEvents();
+        view.onResize();
+    }
+
+    onResize() {
+        const view = this;
+
+        view.setState({isNarrow: document.documentElement.clientWidth < narrowWidth});
+    }
+
+    bindEvents() {
+        const view = this;
+
+        window.addEventListener('resize', () => view.onResize(), false);
     }
 
     openTab(slug) {
@@ -56,7 +89,16 @@ class HeaderNav extends Component {
         view.setState({activeCategorySlug: null});
     }
 
-    render() {
+    switchTab(slug) {
+        const view = this;
+        const {state} = view;
+        const {activeCategorySlug} = state;
+        const newSlug = activeCategorySlug === slug ? null : slug;
+
+        view.setState({activeCategorySlug: newSlug});
+    }
+
+    narrowRender() {
         const view = this;
         const {state} = view;
         const {categoryTree} = state;
@@ -65,14 +107,50 @@ class HeaderNav extends Component {
         return <div>
             {categoryTree.categories
                 .sort((category1, category2) => category1.order - category2.order)
-                .map(({displayName, name, slug}) => <a
-                    href={'/category/' + slug}
+                .map(({displayName, name, slug, categories}) => <div
+                    className="header-nav__link header-nav__link--narrow"
+                    key={slug}>
+                    <a href={'/category/' + slug}
+                        className="header-nav__active-element">
+                        {displayName || name}
+                    </a>
+                    {categories.length === 0 ?
+                        null :
+                        <div className="header-nav__switch-button"
+                            onClick={() => view.switchTab(slug)}>
+                            {activeCategory && activeCategory.slug === slug ? '×' : '+'}
+                        </div>
+                    }
+                    {activeCategory && activeCategory.slug === slug && <TabContent category={activeCategory}/>}
+                </div>)
+            }
+        </div>;
+    }
+
+    render() {
+        const view = this;
+        const {state} = view;
+        const {categoryTree, isNarrow} = state;
+        const activeCategory = find(categoryTree.categories, {slug: state.activeCategorySlug});
+
+        if (isNarrow) {
+            return view.narrowRender();
+        }
+
+        return <div>
+            {categoryTree.categories
+                .sort((category1, category2) => category1.order - category2.order)
+                .map(({displayName, name, slug}) => <div
+                    className="header-nav__link"
                     onMouseEnter={() => view.openTab(slug)}
                     onMouseLeave={() => view.closeTabs()}
-                    key={slug} className="header-nav__link">
-                    {displayName || name}
+                    key={slug}>
+                    <a href={'/category/' + slug}
+                        className="header-nav__active-element">
+                        {displayName || name}
+                    </a>
                     {activeCategory && activeCategory.slug === slug && <TabContent category={activeCategory}/>}
-                </a>)
+                </div>)
             }
         </div>;
     }
