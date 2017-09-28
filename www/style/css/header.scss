@@ -108,13 +108,17 @@
     line-height: 17px;
     background-repeat: no-repeat;
     background-size: 17px 17px;
-    padding-left: 26px;
-    padding-bottom: 11px;
+    padding: 6px 0 6px 26px;
+    background-position: 0 6px;
 }
 
 .header__phone--velcom {
-    margin-top: 19px;
+    margin-top: 9px;
     background-image: url(./../i/velcom.svg);
+}
+
+.header__phone--mts {
+    background-image: url(./../i/mts.svg);
 }
 
 .header__authorization {
@@ -136,7 +140,7 @@
 }
 
 .header__social-block {
-    padding: 9px 0 22px;
+    padding: 7px 0 4px;
 }
 
 .header__social-link {
