@@ -113,13 +113,14 @@
 }
 
 .header__phone--velcom {
-    margin-top: 9px;
+    //margin-top: 9px;
+    margin: 27px 0 11px;
     background-image: url(./../i/velcom.svg);
 }
 
-.header__phone--mts {
-    background-image: url(./../i/mts.svg);
-}
+//.header__phone--mts {
+//    background-image: url(./../i/mts.svg);
+//}
 
 .header__authorization {
     float: right;
