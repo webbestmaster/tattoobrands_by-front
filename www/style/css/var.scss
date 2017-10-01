@@ -14,6 +14,14 @@ $mediaTablet: 767px;
 //$mediaPhone: 367px;
 //$mediaSmall: 319px;
 
+.main-gradient {
+    background-image: linear-gradient(top, #ff4f4f, #b60605);
+}
+
+.main-gradient--inverse {
+    background-image: linear-gradient(top, #b60605, #ff4f4f);
+}
+
 .clear {
     clear: both;
 }

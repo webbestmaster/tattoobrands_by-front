@@ -62,9 +62,9 @@
     text-transform: uppercase;
     cursor: pointer;
     padding: 12px 40px 11px;
-    background-image: linear-gradient(top, #ff4f4f, #b60605);
+    @extend .main-gradient;
     &:hover {
-        background-image: linear-gradient(top, #b60605, #ff4f4f);
+        @extend .main-gradient--inverse;
     }
 }
 

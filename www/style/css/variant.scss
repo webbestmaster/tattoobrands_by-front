@@ -1,0 +1,30 @@
+@import "var";
+
+.variant {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.variant__header {
+    padding-top: 13px;
+    padding-bottom: 9px;
+    line-height: 20px;
+}
+
+.variant-link {
+    display: inline-block;
+    font-size: 13px;
+    padding: 10px 18px 7px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px 10px 0;
+    opacity: 0.8;
+    @extend .main-gradient;
+    &:hover,
+    &.variant-link--active {
+        text-decoration: underline;
+        opacity: 1;
+        @extend .main-gradient--inverse;
+    }
+}
