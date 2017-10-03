@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/webbestmaster/canned-fish-front#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",

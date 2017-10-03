@@ -63,3 +63,8 @@ module.exports.numberToMoney = numberToMoney;
 // console.log(numberToMoney(123456789.123));
 // console.log(numberToMoney(1234567890.1234));
 
+function normalizeString(string) {
+    return string.trim().replace(/\s+/g, ' ');
+}
+
+module.exports.normalizeString = normalizeString;

@@ -174,8 +174,9 @@ class HeaderNav extends Component {
 
 module.exports.initHeaderNav = () => {
     const wrapper = document.querySelector('.js-header-nav');
+    const {categoryTree} = window.app;
 
-    if (!wrapper) {
+    if (!wrapper || !categoryTree) {
         return;
     }
 

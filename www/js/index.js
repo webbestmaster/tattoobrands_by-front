@@ -14,6 +14,7 @@ const cartScripts = require('./cart');
 const orderingScripts = require('./ordering');
 const orderScripts = require('./order');
 const headerScripts = require('./header-nav');
+const headerSearchScripts = require('./header-search');
 
 $(() => {
     // main part
@@ -21,6 +22,9 @@ $(() => {
 
     // main scripts
     headerScripts.initHeaderNav();
+
+    // search
+    headerSearchScripts.initHeaderSearch();
 
     // home
     homeScripts.initSwiper();

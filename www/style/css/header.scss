@@ -1,4 +1,5 @@
 @import "var";
+@import "helper";
 
 .header {
     background-image: url(./../i/big-bg.png);
@@ -79,6 +80,55 @@
     bottom: 0;
     right: 0;
     cursor: pointer;
+
+    &.header-search__icon--in-progress {
+        background-image: url(./../i/search-in-progress.gif);
+    }
+}
+
+.header-search__result-list {
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    max-height: 480px;
+    overflow: auto;
+    border-left: 1px solid $mainColorNegative;
+    border-right: 1px solid $mainColorNegative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.header-search__result-item {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid $mainColorNegative;
+    color: $mainColor;
+    font-size: 12px;
+    &:hover {
+        background-color: $mainColorNegative;
+        .header-search__result-name {
+            text-decoration: underline;
+        }
+    }
+}
+
+.header-search__result-image {
+    width: 70px;
+    height: 70px;
+    float: left;
+    background-size: cover;
+    background-position: center center;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.header-search__result-name {
+    @include line-cap(1);
+    margin: 5px 0 8px;
+}
+
+.header-search__result-description {
+    @include line-cap(3);
 }
 
 .header-work-time {
