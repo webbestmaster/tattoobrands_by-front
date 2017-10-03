@@ -1,4 +1,4 @@
-/* global document, setTimeout */
+/* global document, setTimeout, location */
 const React = require('react');
 const {Component} = React;
 const ReactDOM = require('react-dom');
@@ -69,6 +69,16 @@ class HeaderSearch extends Component {
         </div>;
     }
 
+    onFormSubmit(evt) {
+        evt.preventDefault();
+
+        const view = this;
+        const {searchInput} = view.refs;
+        const query = normalizeString(searchInput.value);
+
+        Object.assign(location, {href: '/search?query=' + query});
+    }
+
     render() {
         const view = this;
         const {state} = view;
@@ -78,7 +88,7 @@ class HeaderSearch extends Component {
             'header-search__icon--in-progress': isInProgress
         });
 
-        return <div className="header-search">
+        return <form className="header-search" onSubmit={evt => view.onFormSubmit(evt)}>
             <input
                 ref="searchInput"
                 className="header-search__input"
@@ -89,7 +99,7 @@ class HeaderSearch extends Component {
             />
             <div className={searchIconClassName}/>
             {view.renderList()}
-        </div>;
+        </form>;
     }
 }
 
