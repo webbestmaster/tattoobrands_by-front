@@ -15,6 +15,7 @@ const orderingScripts = require('./ordering');
 const orderScripts = require('./order');
 const headerScripts = require('./header-nav');
 const headerSearchScripts = require('./header-search');
+const searchPageScripts = require('./search-page');
 
 $(() => {
     // main part
@@ -51,4 +52,7 @@ $(() => {
     // order
     orderScripts.initOrderTable();
     orderScripts.initPdfOrder();
+
+    // search
+    searchPageScripts.initPage();
 });
