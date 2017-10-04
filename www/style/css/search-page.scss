@@ -7,8 +7,18 @@
     padding-right: 17px;
     position: sticky;
     top: 47px;
-    z-index: 2;
+    z-index: 1;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-page__result {
+    opacity: 0.9;
+    transition: opacity 0.3s linear;
+}
+
+.search-page__result--in-progress {
+    opacity: 0.4;
 }

@@ -1,10 +1,10 @@
-/* global fetch */
+/* global fetch, setTimeout */
 
 const searchCache = {};
 
 function search(query) {
     if (searchCache.hasOwnProperty(query)) {
-        return Promise.resolve(searchCache[query]);
+        return new Promise(resolve => setTimeout(() => resolve(searchCache[query]), 0));
     }
 
     return fetch('/api/search?query=' + query)
