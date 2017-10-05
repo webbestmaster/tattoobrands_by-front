@@ -2,12 +2,16 @@
 
 }
 
+.search-page__input-wrapper {
+    position: sticky;
+    top: 77px;
+    z-index: 1;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
 .search-page__input {
     @extend .header-search__input;
-    padding-right: 17px;
-    position: sticky;
-    top: 47px;
-    z-index: 1;
     text-align: center;
     font-size: 24px;
     font-weight: bold;

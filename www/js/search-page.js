@@ -84,13 +84,20 @@ class SearchPage extends Component {
         const {state} = view;
         const {isInProgress} = state;
 
+        const searchIconClassName = classnames('header-search__icon', {
+            'header-search__icon--in-progress': isInProgress
+        });
+
         return <div className="search-page">
-            <input
-                ref="searchInput"
-                className="search-page__input"
-                placeholder="Поиск..."
-                onInput={evt => view.onSearchInput()}
-            />
+            <div className="search-page__input-wrapper">
+                <input
+                    ref="searchInput"
+                    className="search-page__input"
+                    placeholder="Поиск..."
+                    onInput={evt => view.onSearchInput()}
+                />
+                <div className={searchIconClassName}/>
+            </div>
             <div
                 className={classnames(
                     'products-preview',
