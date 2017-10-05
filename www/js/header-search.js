@@ -1,17 +1,14 @@
 /* global document, setTimeout, location */
 const React = require('react');
-const {Component} = React;
 const ReactDOM = require('react-dom');
 const classnames = require('classnames');
-const {search, sortProduct} = require('./my-lib/search');
 const {normalizeString} = require('./my-lib/format');
-const {getUrlQuery} = require('./my-lib/query-parameter');
+const {SearchPage} = require('./search-page');
 
-window.app = window.app || {};
-
-class HeaderSearch extends Component {
+class HeaderSearch extends SearchPage {
     constructor() {
         super();
+
         const view = this;
 
         view.state = {
@@ -22,43 +19,19 @@ class HeaderSearch extends Component {
         };
     }
 
-    componentDidMount() {
-        const view = this;
-        const {query = ''} = getUrlQuery();
-        const {searchInput} = view.refs;
-
-        searchInput.value = decodeURI(query);
-        view.onSearchInput();
-    }
-
-    onSearchInput() {
-        const view = this;
-        const {searchInput} = view.refs;
-        const query = normalizeString(searchInput.value);
-
-        view.setState({isInProgress: true});
-
-        search(query)
-            .then(searchResult => {
-                if (query !== normalizeString(searchInput.value)) {
-                    return;
-                }
-
-                view.setState({
-                    products: sortProduct(searchResult.products, query),
-                    query,
-                    isInProgress: false
-                });
-            });
-    }
-
     renderList() {
         const view = this;
         const {state} = view;
-        const {products, hasFocus} = state;
+        const {products, hasFocus, query} = state;
 
-        if (!products.length || !hasFocus) {
+        if (!hasFocus || !query) {
             return null;
+        }
+
+        if (!products.length) {
+            return <div className="header-search__result-list header-search__result-list--search-empty">
+                По запросу<span className="bold"> "{query}" </span>ничего не найдено
+            </div>;
         }
 
         return <div className="header-search__result-list">
@@ -121,5 +94,3 @@ module.exports.initHeaderSearch = () => {
         wrapper
     );
 };
-
-

@@ -88,6 +88,7 @@
 
 .header-search__result-list {
     position: absolute;
+    left: 0;
     z-index: 3;
     background-color: #fff;
     max-height: 480px;
@@ -95,6 +96,13 @@
     border-left: 1px solid $mainColorNegative;
     border-right: 1px solid $mainColorNegative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-search__result-list--search-empty {
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .header-search__result-item {

@@ -116,3 +116,4 @@ module.exports.initPage = () => {
     );
 };
 
+module.exports.SearchPage = SearchPage;
