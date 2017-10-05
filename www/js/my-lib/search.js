@@ -1,6 +1,10 @@
 /* global fetch, setTimeout */
 
-const searchCache = {};
+const emptyQuery = '';
+
+const searchCache = {
+    [emptyQuery]: {products: []}
+};
 
 function search(query) {
     if (searchCache.hasOwnProperty(query)) {
