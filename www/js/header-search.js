@@ -3,8 +3,9 @@ const React = require('react');
 const {Component} = React;
 const ReactDOM = require('react-dom');
 const classnames = require('classnames');
-const {search} = require('./my-lib/search');
+const {search, sortProduct} = require('./my-lib/search');
 const {normalizeString} = require('./my-lib/format');
+const {getUrlQuery} = require('./my-lib/query-parameter');
 
 window.app = window.app || {};
 
@@ -21,6 +22,15 @@ class HeaderSearch extends Component {
         };
     }
 
+    componentDidMount() {
+        const view = this;
+        const {query = ''} = getUrlQuery();
+        const {searchInput} = view.refs;
+
+        searchInput.value = decodeURI(query);
+        view.onSearchInput();
+    }
+
     onSearchInput() {
         const view = this;
         const {searchInput} = view.refs;
@@ -34,15 +44,8 @@ class HeaderSearch extends Component {
                     return;
                 }
 
-                const {products} = searchResult;
-                const sortedProducts = products
-                    .sort((product1, product2) =>
-                        product1.name.search(new RegExp(query, 'gi')) -
-                        product2.name.search(new RegExp(query, 'gi'))
-                    );
-
                 view.setState({
-                    products: sortedProducts,
+                    products: sortProduct(searchResult.products, query),
                     query,
                     isInProgress: false
                 });
@@ -94,7 +97,10 @@ class HeaderSearch extends Component {
                 className="header-search__input"
                 placeholder="Поиск..."
                 onInput={evt => view.onSearchInput()}
-                onFocus={() => view.setState({hasFocus: true})}
+                onFocus={() => {
+                    view.onSearchInput();
+                    view.setState({hasFocus: true});
+                }}
                 onBlur={() => setTimeout(() => view.setState({hasFocus: false}), 300)}
             />
             <div className={searchIconClassName}/>

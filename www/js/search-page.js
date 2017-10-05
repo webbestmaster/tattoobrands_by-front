@@ -2,7 +2,7 @@
 const React = require('react');
 const {Component} = React;
 const ReactDOM = require('react-dom');
-const {search} = require('./my-lib/search');
+const {search, sortProduct} = require('./my-lib/search');
 const {normalizeString} = require('./my-lib/format');
 const {getUrlQuery} = require('./my-lib/query-parameter');
 const classnames = require('classnames');
@@ -45,21 +45,8 @@ class SearchPage extends Component {
                     return;
                 }
 
-                const {products} = searchResult;
-                const sortedProducts = products
-                    .sort((product1, product2) => {
-                        const delta = product1.name.search(new RegExp(query, 'gi')) -
-                            product2.name.search(new RegExp(query, 'gi'));
-
-                        if (delta) {
-                            return delta;
-                        }
-
-                        return product1.name > product2.name ? 0.5 : -0.5;
-                    });
-
                 view.setState({
-                    products: sortedProducts,
+                    products: sortProduct(searchResult.products, query),
                     query,
                     isInProgress: false
                 }, restoreScrollTop);
@@ -81,11 +68,11 @@ class SearchPage extends Component {
 
         return products.map(({slug, name, description, images, price, promotable}) =>
             <a onContextMenu={evt => evt.preventDefault()}
-               href={'/product/' + slug}
-               className={classnames('product-preview', {'product-preview--promotable': promotable})}
-               key={slug}>
+                href={'/product/' + slug}
+                className={classnames('product-preview', {'product-preview--promotable': promotable})}
+                key={slug}>
                 <div className="product-preview__image"
-                     style={{backgroundImage: 'url(' + images[0] + ')'}}/>
+                    style={{backgroundImage: 'url(' + images[0] + ')'}}/>
                 <h3 className="product-preview__name">{name}</h3>
                 <div className="product-preview__description">{description}</div>
                 <span className="product-preview__price">{price} руб.</span>
