@@ -50,8 +50,8 @@ $(() => {
     orderingScripts.initOrderForm();
 
     // order
-    orderScripts.initOrderTable();
-    orderScripts.initPdfOrder();
+    // orderScripts.initOrderTable();
+    // orderScripts.initPdfOrder();
 
     // search
     searchPageScripts.initPage();

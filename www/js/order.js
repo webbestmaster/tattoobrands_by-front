@@ -8,6 +8,7 @@ const {browser} = require('./my-lib/browser');
 
 window.app = window.app || {};
 
+/*
 class OrderTable extends Component {
     constructor() {
         super();
@@ -104,7 +105,9 @@ class OrderTable extends Component {
         </div>;
     }
 }
+*/
 
+/*
 module.exports.initOrderTable = () => {
     const wrapper = document.querySelector('.js-table-order');
 
@@ -117,7 +120,9 @@ module.exports.initOrderTable = () => {
         wrapper
     );
 };
+*/
 
+/*
 module.exports.initPdfOrder = () => {
     function saveFile(name, type, data) {
         if (navigator.msSaveBlob) {
@@ -173,3 +178,4 @@ module.exports.initPdfOrder = () => {
             .then(() => pdfOrder.removeClass(cssClassBusy));
     });
 };
+*/
