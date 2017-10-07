@@ -64,7 +64,7 @@ class HeaderSearch extends SearchPage {
             'header-search__icon--in-progress': isInProgress
         });
 
-        return <form className="header-search" onSubmit={evt => view.onFormSubmit(evt)}>
+        return <form className="header-search" onSubmit={evt => view.onFormSubmit(evt)} ref="form">
             <input
                 ref="searchInput"
                 className="header-search__input"
@@ -76,7 +76,7 @@ class HeaderSearch extends SearchPage {
                 }}
                 onBlur={() => setTimeout(() => view.setState({hasFocus: false}), 300)}
             />
-            <div className={searchIconClassName}/>
+            <div onClick={evt => view.onFormSubmit(evt)} className={searchIconClassName}/>
             {view.renderList()}
         </form>;
     }

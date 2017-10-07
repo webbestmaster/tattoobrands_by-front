@@ -96,7 +96,7 @@ class SearchPage extends Component {
                     placeholder="Поиск..."
                     onInput={evt => view.onSearchInput()}
                 />
-                <div className={searchIconClassName}/>
+                <div onClick={() => view.refs.searchInput.focus()} className={searchIconClassName}/>
             </div>
             <div
                 className={classnames(
