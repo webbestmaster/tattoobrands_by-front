@@ -3,6 +3,7 @@
 $footerTopPadding: 32px;
 
 .footer {
+    min-height: 171px;
     //height: 117px;
     position: relative;
     border-bottom: solid 3px $secondaryColor;
@@ -58,7 +59,7 @@ $footerTopPadding: 32px;
 .footer__full-line {
     clear: both;
     text-align: center;
-    padding: 23px 10px 0;
+    padding: 39px 10px 0;
 }
 
 .footer__nav_link {
