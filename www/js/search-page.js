@@ -27,7 +27,10 @@ class SearchPage extends Component {
         const {searchInput} = view.refs;
 
         searchInput.value = decodeURI(query);
-        view.onSearchInput();
+
+        if (query) {
+            view.onSearchInput();
+        }
     }
 
     onSearchInput() {

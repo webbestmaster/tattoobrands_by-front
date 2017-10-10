@@ -2,22 +2,19 @@
 
 const emptyQuery = '';
 
-const searchCache = {
-    [emptyQuery]: {products: []}
+const promiseCache = {
+    [emptyQuery]: Promise.resolve({products: []})
 };
 
 function search(query) {
-    if (searchCache.hasOwnProperty(query)) {
-        return new Promise(resolve => setTimeout(() => resolve(searchCache[query]), 0));
+    if (promiseCache.hasOwnProperty(query)) {
+        return promiseCache[query];
     }
 
-    return fetch('/api/search?query=' + query)
-        .then(rawResult => rawResult.json())
-        .then(result => {
-            Object.assign(searchCache, {[query]: result});
+    promiseCache[query] = fetch('/api/search?query=' + query)
+        .then(rawResult => rawResult.json());
 
-            return result;
-        });
+    return promiseCache[query];
 }
 
 module.exports.search = search;
