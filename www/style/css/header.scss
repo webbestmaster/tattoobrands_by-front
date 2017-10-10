@@ -80,6 +80,7 @@
     bottom: 0;
     right: 0;
     cursor: pointer;
+    transition: background 0.05s linear;
 
     &.header-search__icon--in-progress {
         background-image: url(./../i/search-in-progress.gif);
