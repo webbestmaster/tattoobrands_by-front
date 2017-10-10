@@ -24,9 +24,9 @@ body {
 
 .main-wrapper {
     min-height: 100%;
-    margin-bottom: -223px;
+    margin-bottom: -185px;
     &:after {
-        height: 223px;
+        height: 185px;
         content: '';
         display: block;
     }

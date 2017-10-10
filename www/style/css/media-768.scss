@@ -113,6 +113,12 @@
         padding-top: 24px;
     }
 
+    .footer {
+        &:before {
+            display: none;
+        }
+    }
+
     .label__text {
         text-align: center;
         float: none;
