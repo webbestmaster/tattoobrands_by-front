@@ -3,6 +3,10 @@ const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 
 module.exports.initSwiper = () => {
+    const cssInitialClass = 'home-swiper-wrapper--wait-for-init';
+
+    $('.' + cssInitialClass).removeClass(cssInitialClass);
+
     function onSwiperResize(swiper) {
         // count height
         // const slideHeight = 261;

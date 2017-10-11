@@ -3,9 +3,14 @@
 .home-swiper-wrapper {
     width: 100%;
     overflow: hidden;
-    height: 1px; // will set normal size by js, do not use 0px, 0px -=> bug with slides. extra left padding
     position: relative; // need for .swiper-pagination
     transition: background-color 0.3s ease-out;
+    &.home-swiper-wrapper--wait-for-init {
+        height: 1px; // will set normal size by js, do not use 0px, 0px -=> bug with slides. extra left padding
+        opacity: 0;
+        margin-bottom: -1px;
+    }
+
     &:hover {
         background-color: $mainBgColor;
     }
