@@ -1,0 +1,19 @@
+.bread-crumbs {
+    display: block;
+    font-size: 14px;
+}
+
+.bread-crumbs__link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 28px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.bread-crumbs__separator {
+    display: inline-block;
+    padding: 0 8px;
+}

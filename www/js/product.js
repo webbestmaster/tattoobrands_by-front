@@ -102,3 +102,75 @@ module.exports.initAddToBasketForm = () => {
         });
     });
 };
+
+function hasCategoryTheProduct(category, productId) {
+    return category.products.indexOf(productId) !== -1;
+}
+
+function findProductPath(category, productId, passList, callBack, watcher) {
+    const currentPassList = JSON.parse(JSON.stringify(passList));
+    const {slug, name, displayName} = category;
+
+    currentPassList.push({slug, name, displayName});
+
+    if (hasCategoryTheProduct(category, productId) && watcher.hasResult === false) {
+        callBack(currentPassList);
+        Object.assign(watcher, {hasResult: true});
+        return true; // stop outside loop
+    }
+
+    category
+        .categories
+        .some(subCategory => findProductPath(subCategory, productId, currentPassList, callBack, watcher));
+
+    // check for top category and for no result
+    if (currentPassList.length === 1 && watcher.hasResult === false) {
+        callBack(null);
+    }
+
+    return false; // continue outside loop
+}
+
+function getCategoriesPath(productId) {
+    const {app} = window;
+    const categoryTree = JSON.parse(JSON.stringify(app.categoryTree));
+    const resultObject = {};
+
+    findProductPath(categoryTree, productId, [], result => Object.assign(resultObject, {result}), {hasResult: false});
+
+    return resultObject.result;
+}
+
+module.exports.initBreadCrumbs = () => {
+    const wrapper = document.querySelector('.js-bread-crumbs');
+
+    if (!wrapper) {
+        console.log('no wrapper for bread-crumbs');
+        return;
+    }
+
+    const {app} = window;
+    const product = JSON.parse(JSON.stringify(app.product));
+
+    const categoriesPass = getCategoriesPath(product._id); // eslint-disable-line no-underscore-dangle
+
+    if (categoriesPass === null) {
+        console.error('Can NOT create bread crumbs');
+        return;
+    }
+
+    const categoryHtml = categoriesPass
+        .map(({slug, name, displayName}) =>
+            '<a class="bread-crumbs__link" href="{{href}}">{{name}}</a>'
+                .replace('{{href}}', '/category/' + slug)
+                .replace('{{name}}', displayName || name) +
+            '<span class="bread-crumbs__separator">&gt;</span>'
+        )
+        .join('');
+
+    const productHtml = '<a class="bread-crumbs__link secondary-color" href="{{href}}">{{name}}</a>'
+        .replace('{{href}}', '/category/' + product.slug)
+        .replace('{{name}}', product.displayName || product.name);
+
+    wrapper.innerHTML = categoryHtml + productHtml;
+};

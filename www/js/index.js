@@ -34,6 +34,7 @@ $(() => {
 
     // product
     productScripts.initSwiper();
+    productScripts.initBreadCrumbs();
     productScripts.initSwiperZoom();
     productScripts.initAddToBasketForm();
 
