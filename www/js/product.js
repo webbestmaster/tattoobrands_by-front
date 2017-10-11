@@ -114,6 +114,7 @@ function findProductPath(category, productId, passList, callBack, watcher) {
     currentPassList.push({slug, name, displayName});
 
     if (hasCategoryTheProduct(category, productId) && watcher.hasResult === false) {
+        currentPassList.shift();
         callBack(currentPassList);
         Object.assign(watcher, {hasResult: true});
         return true; // stop outside loop
@@ -155,7 +156,7 @@ module.exports.initBreadCrumbs = () => {
     const categoriesPass = getCategoriesPath(product._id); // eslint-disable-line no-underscore-dangle
 
     if (categoriesPass === null) {
-        console.error('Can NOT create bread crumbs');
+        console.error('Can NOT create bread crumbs for product');
         return;
     }
 
@@ -169,7 +170,7 @@ module.exports.initBreadCrumbs = () => {
         .join('');
 
     const productHtml = '<a class="bread-crumbs__link secondary-color" href="{{href}}">{{name}}</a>'
-        .replace('{{href}}', '/category/' + product.slug)
+        .replace('{{href}}', '/product/' + product.slug)
         .replace('{{name}}', product.displayName || product.name);
 
     wrapper.innerHTML = categoryHtml + productHtml;
