@@ -1,4 +1,13 @@
 /* global document */
+
+// polyfill
+require('./lib/polyfill/es5-shim');
+require('./lib/polyfill/es5-sham');
+require('./lib/polyfill/json3');
+require('./lib/polyfill/es6-shim');
+require('./lib/polyfill/es6-sham.min');
+require('./lib/polyfill/es7-shim');
+
 require('./../style/css/_root.scss');
 
 window.app = window.app || {};

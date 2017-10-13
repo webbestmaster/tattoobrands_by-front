@@ -1,6 +1,14 @@
 // added here to avoid added they to main.js
 // if you know better way, please, talk to me. BR, Dmitry Turvotsov
 
+// polyfill
+require('./lib/polyfill/es5-shim');
+require('./lib/polyfill/es5-sham');
+require('./lib/polyfill/json3');
+require('./lib/polyfill/es6-shim');
+require('./lib/polyfill/es6-sham.min');
+require('./lib/polyfill/es7-shim');
+
 const jQuery = require('jquery');
 
 Object.assign(window, {
