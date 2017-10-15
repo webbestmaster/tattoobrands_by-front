@@ -77,7 +77,7 @@ class SearchPage extends Component {
                 <div className="product-preview__image"
                     style={{backgroundImage: 'url(' + images[0] + ')'}}/>
                 <h3 className="product-preview__name">{name}</h3>
-                <div className="product-preview__description">{description}</div>
+                <div className="product-preview__description" dangerouslySetInnerHTML={{__html: description}}/>
                 <span className="product-preview__price">{price} руб.</span>
             </a>);
     }

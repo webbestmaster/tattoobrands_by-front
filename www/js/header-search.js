@@ -40,7 +40,7 @@ class HeaderSearch extends SearchPage {
                     key={slug}>
                     <div className="header-search__result-image" style={{backgroundImage: 'url(' + images[0] + ')'}}/>
                     <h4 className="header-search__result-name">{name}</h4>
-                    <p className="header-search__result-description">{description}</p>
+                    <p className="header-search__result-description" dangerouslySetInnerHTML={{__html: description}}/>
                 </a>)}
         </div>;
     }
