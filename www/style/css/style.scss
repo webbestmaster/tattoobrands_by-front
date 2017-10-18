@@ -24,9 +24,9 @@ body {
 
 .main-wrapper {
     min-height: 100%;
-    margin-bottom: -185px;
+    margin-bottom: -188px; // footer real height
     &:after {
-        height: 185px;
+        height: 188px; // footer real height
         content: '';
         display: block;
     }
