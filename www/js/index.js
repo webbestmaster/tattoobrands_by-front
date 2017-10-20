@@ -39,7 +39,8 @@ $(() => {
 
     // home
     homeScripts.initSwiper();
-    homeScripts.initPagination();
+    homeScripts.initCategories();
+    // homeScripts.initPagination();
     homeScripts.productReview();
 
     // product

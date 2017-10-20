@@ -1,6 +1,7 @@
-/* global document */
+/* global document, fetch */
 const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
+const {ProductPreview} = require('./component/product-preview');
 
 module.exports.initSwiper = () => {
     const cssInitialClass = 'home-swiper-wrapper--wait-for-init';
@@ -41,6 +42,7 @@ module.exports.initSwiper = () => {
     console.log('home swiper is here ->', homeSwiper);
 };
 
+/*
 module.exports.initPagination = () => {
     const {indexPagination} = window.app;
 
@@ -75,7 +77,94 @@ module.exports.initPagination = () => {
         onPageClick: (evt, page) => Object.assign(location, {search: 'page=' + page})
     });
 };
+*/
 
 module.exports.productReview = () => {
     $('.js-product-preview').on('contextmenu', evt => evt.preventDefault());
+};
+
+
+const React = require('react');
+const {Component} = React;
+const ReactDOM = require('react-dom');
+
+class Categories extends Component {
+    constructor() {
+        super();
+
+        const view = this;
+        const {app} = window;
+        const {categoryTree} = app;
+
+        view.state = {
+            categoryTree: JSON.parse(JSON.stringify(categoryTree))
+        };
+    }
+
+    render() {
+        const view = this;
+        const {state} = view;
+        const {categoryTree} = state;
+        const {categories} = categoryTree;
+
+        return <div>
+            {categories.map((category, ii) => <Category key={ii} category={category}/>)}
+        </div>;
+    }
+}
+
+class Category extends Component {
+    constructor() {
+        super();
+
+        const view = this;
+
+        view.state = {
+            products: []
+        };
+    }
+
+    getProducts() {
+        const view = this;
+        const {props} = view;
+        const {category} = props;
+
+        fetch('/api/get-products-by-ids/' + category.products.join(';'))
+            .then(data => data.json())
+            .then(({products}) => view.setState({products}, () => console.log('TODO: ADD SWIPE HERE')));
+    }
+
+    componentDidMount() {
+        const view = this;
+
+        view.getProducts();
+    }
+
+    render() {
+        const view = this;
+        const {props, state} = view;
+        const {products} = state;
+        const {category} = props;
+        const {name, displayName} = category;
+        const visibleCategoryName = displayName || name;
+
+        return <div>
+            <h3>{visibleCategoryName}</h3>
+            {products.map(product => <ProductPreview key={product.slug} product={product}/>)}
+        </div>;
+    }
+}
+
+module.exports.initCategories = () => {
+    const wrapper = document.querySelector('.js-category-list-wrapper');
+    const {categoryTree} = window.app;
+
+    if (!wrapper || !categoryTree) {
+        return;
+    }
+
+    ReactDOM.render(
+        <Categories/>,
+        wrapper
+    );
 };

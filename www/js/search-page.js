@@ -7,6 +7,7 @@ const {normalizeString} = require('./my-lib/format');
 const {getUrlQuery} = require('./my-lib/query-parameter');
 const classnames = require('classnames');
 const {saveScrollTop, restoreScrollTop} = require('./my-lib/screen');
+const {ProductPreview} = require('./component/product-preview');
 
 class SearchPage extends Component {
     constructor() {
@@ -69,17 +70,7 @@ class SearchPage extends Component {
             return <h3 className="page-header">Ничего не найдено!</h3>;
         }
 
-        return products.map(({slug, name, description, images, price, promotable}) =>
-            <a onContextMenu={evt => evt.preventDefault()}
-                href={'/product/' + slug}
-                className={classnames('product-preview', {'product-preview--promotable': promotable})}
-                key={slug}>
-                <div className="product-preview__image"
-                    style={{backgroundImage: 'url(' + images[0] + ')'}}/>
-                <h3 className="product-preview__name">{name}</h3>
-                <div className="product-preview__description" dangerouslySetInnerHTML={{__html: description}}/>
-                <span className="product-preview__price">{price} руб.</span>
-            </a>);
+        return products.map(product => <ProductPreview key={product.slug} product={product}/>);
     }
 
     render() {

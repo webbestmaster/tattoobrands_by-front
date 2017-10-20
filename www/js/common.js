@@ -16,7 +16,7 @@ Object.assign(window, {
     $: jQuery
 });
 
-require('./lib/jquery.twbs-pagination');
+// require('./lib/jquery.twbs-pagination');
 require('./lib/idangerous.swiper');
 require('./lib/snackbar');
 require('./my-lib/basket');
