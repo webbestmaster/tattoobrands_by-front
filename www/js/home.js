@@ -1,5 +1,5 @@
-/* global document, fetch */
-const Swiper = require('./lib/idangerous.swiper');
+/* global document, fetch, Swiper */
+// const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 const {ProductPreview} = require('./component/product-preview');
 
@@ -8,10 +8,11 @@ module.exports.initSwiper = () => {
 
     $('.' + cssInitialClass).removeClass(cssInitialClass);
 
-    function onSwiperResize(swiper) {
+    function onSwiperResize() {
         // count height
         // const slideHeight = 261;
         // const slideWidth = 980;
+        const swiper = this; // eslint-disable-line no-invalid-this
         const slideHeight = 325;
         const slideWidth = 1220;
         const width = document.documentElement.clientWidth;
@@ -19,24 +20,33 @@ module.exports.initSwiper = () => {
         const neededHeightPx = neededHeight + 'px';
 
         // get nodes
-        const {wrapper, container, slides} = swiper;
-        const nodes = [wrapper, container].concat(slides);
+        const {$wrapperEl, $el, slides} = swiper;
+        const nodes = [$wrapperEl, $el].concat(slides);
 
-        nodes.forEach(node => Object.assign(node.style, {height: neededHeightPx}));
+        nodes.forEach(node => node.css({height: neededHeightPx}));
     }
 
     const homeSwiper = new Swiper('.js-home-swiper-wrapper', {
-        pagination: '.swiper-pagination',
+        pagination: {
+            el: '.js-home-swiper-wrapper .swiper-pagination', // eslint-disable-line id-length
+            clickable: true
+        },
+        on: { // eslint-disable-line id-length
+            init: onSwiperResize,
+            resize: onSwiperResize
+        },
         // nextButton: '.swiper-button-next',
         // prevButton: '.swiper-button-prev',
-        paginationClickable: true,
+        // paginationClickable: true,
         // spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 6000,
-        autoplayDisableOnInteraction: false,
-        loop: true,
-        onInit: onSwiperResize,
-        onAfterResize: onSwiperResize
+        // centeredSlides: true,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false
+        },
+        loop: true
+        // onInit: onSwiperResize,
+        // onAfterResize: onSwiperResize
     });
 
     console.log('home swiper is here ->', homeSwiper);
@@ -114,6 +124,11 @@ class Categories extends Component {
 }
 
 class Category extends Component {
+    attr = {
+        swiper: null,
+        listItemLimit: 10
+    }
+
     constructor() {
         super();
 
@@ -129,15 +144,26 @@ class Category extends Component {
         const {props} = view;
         const {category} = props;
 
-        fetch('/api/get-products-by-ids/' + category.products.join(';'))
+        fetch('/api/get-products-by-ids/' + category.products.slice(0, view.attr.listItemLimit).join(';'))
             .then(data => data.json())
-            .then(({products}) => view.setState({products}, () => console.log('TODO: ADD SWIPE HERE')));
+            .then(({products}) => view.setState({products}, () => view.makeSwiper()));
     }
 
     componentDidMount() {
         const view = this;
 
         view.getProducts();
+    }
+
+    makeSwiper() {
+        const view = this;
+        const {props} = view;
+        const {category} = props;
+
+        view.attr.swiper = new Swiper('.js-category-swiper-container--' + category.slug, {
+            slidesPerView: 'auto',
+            freeMode: true
+        });
     }
 
     render() {
@@ -148,10 +174,42 @@ class Category extends Component {
         const {name, displayName} = category;
         const visibleCategoryName = displayName || name;
 
-        return <div>
-            <h3>{visibleCategoryName}</h3>
-            {products.map(product => <ProductPreview key={product.slug} product={product}/>)}
-        </div>;
+        // TODO: fix several <br />
+
+        return [
+            <a key="category-header"
+                href={'/category/' + category.slug}
+                className="category-row__header">
+                {visibleCategoryName}
+            </a>,
+            <div key="category-content"
+                className={
+                    'swiper-container category-swiper-container js-category-swiper-container--' + category.slug
+                }>
+                <div className="swiper-wrapper">
+                    {products.map(product =>
+                        <div key={product.slug} className="swiper-slide">
+                            <ProductPreview key={product.slug} product={product}/>
+                        </div>
+                    )}
+                    <div className="swiper-slide">
+                        <a href={'/category/' + category.slug}
+                            className="product-preview">
+                            <div className="product-preview__image"
+                                style={{backgroundImage: 'url(' + category.image + ')'}}/>
+                            <h3 className="product-preview__name">{visibleCategoryName}</h3>
+                            <div className="product-preview__description ta-center">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h1>Перейти в категорию</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>];
     }
 }
 

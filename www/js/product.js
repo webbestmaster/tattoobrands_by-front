@@ -1,5 +1,5 @@
-/* global document, Event */
-const Swiper = require('./lib/idangerous.swiper');
+/* global document, Event, Swiper */
+// const Swiper = require('./lib/idangerous.swiper');
 const $ = require('jquery');
 
 const {loadImages} = require('./helper/image');

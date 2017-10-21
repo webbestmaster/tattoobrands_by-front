@@ -40,6 +40,7 @@ $(() => {
     // home
     homeScripts.initSwiper();
     homeScripts.initCategories();
+
     // homeScripts.initPagination();
     homeScripts.productReview();
 

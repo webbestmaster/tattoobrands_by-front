@@ -2,7 +2,7 @@
 @import "reset.css";
 
 // libs
-@import "./../../js/lib/idangerous.swiper.css";
+//@import "./../../js/lib/idangerous.swiper.css";
 @import "./../../js/lib/material.css"; // for snackbar
 @import "./../../js/lib/snackbar.css";
 //@import "./pagination";
@@ -17,6 +17,7 @@
 @import "header-nav";
 @import "category-item";
 @import "home-swiper";
+@import "home-category-swiper";
 @import "footer";
 @import "product-preview";
 @import "bread-crumbs";

@@ -17,7 +17,7 @@ Object.assign(window, {
 });
 
 // require('./lib/jquery.twbs-pagination');
-require('./lib/idangerous.swiper');
+// require('./lib/idangerous.swiper');
 require('./lib/snackbar');
 require('./my-lib/basket');
 require('./my-lib/format');

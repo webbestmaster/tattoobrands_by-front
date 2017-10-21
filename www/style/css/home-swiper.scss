@@ -38,7 +38,7 @@
     line-height: 0;
 }
 
-.swiper-pagination-switch {
+.swiper-pagination-bullet {
     width: 8px;
     height: 8px;
     display: inline-block;
@@ -47,12 +47,12 @@
     background-color: $mainColor;
     cursor: pointer;
     margin: 0 4px;
-    &.swiper-active-switch {
+    &.swiper-pagination-bullet-active {
         background-color: $secondaryColor;
         opacity: 0.8;
     }
     &:hover {
-        @extend .swiper-active-switch;
+        @extend .swiper-pagination-bullet;
         box-shadow: 0 0 7px 2px rgba(255, 0, 0, 0.9);
     }
 }
