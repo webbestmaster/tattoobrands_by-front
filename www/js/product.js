@@ -1,5 +1,5 @@
-/* global document, Event, Swiper */
-// const Swiper = require('./lib/idangerous.swiper');
+/* global document, Event */
+const Swiper = require('./lib/swiper');
 const $ = require('jquery');
 
 const {loadImages} = require('./helper/image');
@@ -18,27 +18,29 @@ module.exports.initSwiper = () => {
         .then(images => {
             const maxHeightImage = images.sort((image0, image1) => image1.height - image0.height)[0];
 
-            function onSwiperResize(swiper) {
-                const {wrapper, container, slides} = swiper;
-                const size = Math.min(maxHeightImage.height, container.clientWidth) + 'px';
-                const nodes = [wrapper, container].concat(slides);
+            function onSwiperResize() {
+                const swiper = this; // eslint-disable-line no-invalid-this
+                const {$wrapperEl, $el, slides} = swiper;
+                const size = Math.min(maxHeightImage.height, $el[0].clientWidth) + 'px';
+                const nodes = [$wrapperEl, $el].concat(slides);
 
-                nodes.forEach(node => Object.assign(node.style, {height: size}));
+                nodes.forEach(node => node.css({height: size}));
             }
 
             const productSwiper = new Swiper(productSwiperWrapper[0], {
-                pagination: '.swiper-pagination',
-                // nextButton: '.swiper-button-next',
-                // prevButton: '.swiper-button-prev',
-                paginationClickable: true,
-                // spaceBetween: 30,
-                centeredSlides: true,
-                autoplay: 6000,
-                autoplayDisableOnInteraction: false,
-                loop: true,
-                keyboardControl: true,
-                onInit: onSwiperResize,
-                onAfterResize: onSwiperResize
+                pagination: {
+                    el: '.swiper-pagination', // eslint-disable-line id-length
+                    clickable: true
+                },
+                on: { // eslint-disable-line id-length
+                    init: onSwiperResize,
+                    resize: onSwiperResize
+                },
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false
+                },
+                loop: true
             });
 
             console.log('product swiper is here ->', productSwiper);

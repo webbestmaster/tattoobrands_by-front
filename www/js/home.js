@@ -1,5 +1,5 @@
-/* global document, fetch, Swiper */
-// const Swiper = require('./lib/idangerous.swiper');
+/* global document, fetch */
+const Swiper = require('./lib/swiper');
 const $ = require('jquery');
 const {ProductPreview} = require('./component/product-preview');
 
