@@ -118,6 +118,7 @@ class Categories extends Component {
         const {categories} = categoryTree;
 
         return <div>
+            <PromoCategory/>
             {categories.map((category, ii) => <Category key={ii} category={category}/>)}
         </div>;
     }
@@ -205,6 +206,78 @@ class Category extends Component {
                                 <br/>
                                 <br/>
                                 <h1>Перейти в категорию</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>];
+    }
+}
+
+class PromoCategory extends Category {
+    constructor() {
+        super();
+
+        const view = this;
+
+        view.state = {
+            products: []
+        };
+    }
+
+    getProducts() {
+        const view = this;
+
+        fetch('/api/get-promo-products/')
+            .then(data => data.json())
+            .then(({products}) => view.setState({products}, () => view.makeSwiper()));
+    }
+
+    componentDidMount() {
+        const view = this;
+
+        view.getProducts();
+    }
+
+    makeSwiper() {
+        const view = this;
+
+        view.attr.swiper = new Swiper('.js-category-swiper-container--promo-product', {
+            slidesPerView: 'auto',
+            freeMode: true
+        });
+    }
+
+    render() {
+        const view = this;
+        const {state} = view;
+        const {products} = state;
+
+        // TODO: fix several <br />
+        return [
+            <a key="category-header"
+                href="/promo-products"
+                className="category-row__header">Промо товары</a>,
+            <div key="category-content"
+                className={'swiper-container category-swiper-container js-category-swiper-container--promo-product'}>
+                <div className="swiper-wrapper">
+                    {products.map(product =>
+                        <div key={product.slug} className="swiper-slide">
+                            <ProductPreview key={product.slug} product={product}/>
+                        </div>
+                    )}
+                    <div className="swiper-slide">
+                        <a href="/promo-products"
+                            className="product-preview">
+                            <div className="product-preview__image"/>
+                            <h3 className="product-preview__name">Промо товары</h3>
+                            <div className="product-preview__description ta-center">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h1>Перейти в промо товары</h1>
                             </div>
                         </a>
                     </div>
