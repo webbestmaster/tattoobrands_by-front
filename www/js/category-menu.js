@@ -8,15 +8,39 @@ const ReactDOM = require('react-dom');
 window.app = window.app || {};
 
 class CategoryMenuItem extends Component {
+    constructor() {
+        super();
+
+        const view = this;
+
+        view.state = {
+            isOpen: false
+        };
+    }
+
     render() {
         const view = this;
         const {state, props} = view;
+        const {isOpen} = state;
         const {category} = props;
+        const {slug, name, displayName, categories} = category;
+        const visibleName = displayName || name;
 
-        return <div>{category.slug}
-            <hr/>
-            {category.categories
-                .map(childCategory => <CategoryMenuItem key={childCategory.slug} category={childCategory}/>)}
+        if (categories.length === 0) {
+            return <div className="category-menu__item">
+                <a className="category-menu__link" href={'/category/' + slug}>{visibleName}</a>
+            </div>;
+        }
+
+        return <div className="category-menu__item">
+            <div className="category-menu__opener" onClick={() => view.setState({isOpen: !isOpen})}>
+                {isOpen ? '-' : '+'}
+            </div>
+            <a className="category-menu__link"
+                href={'/category/' + slug}>{visibleName}</a>
+            {isOpen && <div className="category-menu__sub-category-wrapper">
+                {categories.map(childCategory => <CategoryMenuItem category={childCategory} key={childCategory.slug}/>)}
+            </div>}
         </div>;
     }
 }
