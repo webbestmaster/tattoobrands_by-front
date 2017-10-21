@@ -117,10 +117,10 @@ class Categories extends Component {
         const {categoryTree} = state;
         const {categories} = categoryTree;
 
-        return <div>
-            <PromoCategory/>
-            {categories.map((category, ii) => <Category key={ii} category={category}/>)}
-        </div>;
+        return [
+            <PromoCategory key="promo-category"/>,
+            categories.map((category, ii) => <Category key={ii} category={category}/>)
+        ];
     }
 }
 

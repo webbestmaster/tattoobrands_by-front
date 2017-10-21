@@ -26,6 +26,7 @@ const headerScripts = require('./header-nav');
 const headerSearchScripts = require('./header-search');
 const searchPageScripts = require('./search-page');
 const categoryPageScripts = require('./category');
+const categoryMenuScripts = require('./category-menu');
 
 $(() => {
     // main part
@@ -40,6 +41,7 @@ $(() => {
     // home
     homeScripts.initSwiper();
     homeScripts.initCategories();
+    categoryMenuScripts.initCategoryMenu();
 
     // homeScripts.initPagination();
     homeScripts.productReview();
