@@ -194,10 +194,8 @@ class Category extends Component {
                         </div>
                     )}
                     <div className="swiper-slide">
-                        <a href={'/category/' + category.slug}
-                            className="product-preview">
-                            <div className="product-preview__image"
-                                style={{backgroundImage: 'url(' + category.image + ')'}}/>
+                        <a href={'/category/' + category.slug} className="product-preview">
+                            <div className="product-preview__image product-preview__image--go-to-category"/>
                             <h3 className="product-preview__name">{visibleCategoryName}</h3>
                             <div className="product-preview__description ta-center">
                                 <br/>

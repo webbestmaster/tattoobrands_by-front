@@ -61,10 +61,19 @@
     transition: all 0.3s ease-out;
     background-position: center center;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .product-preview__image--promo-preview-image {
     background-image: url('./../i/promo.png');
+    background-size: 60%;
+    background-color: #fff;
+}
+
+.product-preview__image--go-to-category {
+    background-image: url('./../i/go-to-category.svg');
+    background-size: 60%;
+    background-color: #fff;
 }
 
 .product-preview__name {
