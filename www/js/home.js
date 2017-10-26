@@ -269,10 +269,9 @@ class PromoCategory extends Category {
                     <div className="swiper-slide">
                         <a href="/promo-products"
                             className="product-preview">
-                            <div className="product-preview__image"/>
+                            <div className="product-preview__image product-preview__image--promo-preview-image"/>
                             <h3 className="product-preview__name">Промо товары</h3>
                             <div className="product-preview__description ta-center">
-                                <br/>
                                 <br/>
                                 <br/>
                                 <br/>

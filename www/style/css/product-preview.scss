@@ -63,6 +63,10 @@
     background-size: cover;
 }
 
+.product-preview__image--promo-preview-image {
+    background-image: url('./../i/promo.png');
+}
+
 .product-preview__name {
     font-size: 13px;
     line-height: 17px;
