@@ -38,10 +38,12 @@ class HeaderNav extends Component {
 
         const view = this;
         const {app} = window;
-        const {categoryTree} = app;
+        const categoryTree = JSON.parse(JSON.stringify(app.categoryTree));
+
+        categoryTree.categories = categoryTree.categories.filter(({order}) => order > 0);
 
         view.state = {
-            categoryTree: JSON.parse(JSON.stringify(categoryTree)),
+            categoryTree,
             activeCategorySlug: null,
             isNarrow: false,
             wrapper: document.querySelector('.js-header-nav')

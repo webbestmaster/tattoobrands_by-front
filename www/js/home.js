@@ -147,7 +147,8 @@ class Category extends Component {
 
         fetch('/api/get-products-by-ids/' + category.products.slice(0, view.attr.listItemLimit).join(';'))
             .then(data => data.json())
-            .then(({products}) => view.setState({products}, () => view.makeSwiper()));
+            .then(({products}) => view.setState({products}, () => view.makeSwiper()))
+            .catch(() => console.log('can not get product from /api/get-products-by-ids/'));
     }
 
     componentDidMount() {
