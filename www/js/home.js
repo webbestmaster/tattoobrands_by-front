@@ -127,8 +127,9 @@ class Categories extends Component {
 class Category extends Component {
     attr = {
         swiper: null,
-        listItemLimit: 10
-    }
+        listItemLimit: 10,
+        minProductsLimit: 3
+    };
 
     constructor() {
         super();
@@ -154,6 +155,10 @@ class Category extends Component {
     componentDidMount() {
         const view = this;
 
+        if (view.props.category.products.length < view.attr.minProductsLimit) {
+            return;
+        }
+
         view.getProducts();
     }
 
@@ -175,6 +180,10 @@ class Category extends Component {
         const {category} = props;
         const {name, displayName} = category;
         const visibleCategoryName = displayName || name;
+
+        if (category.products.length < view.attr.minProductsLimit) {
+            return null;
+        }
 
         // TODO: fix several <br />
 
