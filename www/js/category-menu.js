@@ -39,7 +39,9 @@ class CategoryMenuItem extends Component {
             <a className="category-menu__link"
                 href={'/category/' + slug}>{visibleName}</a>
             {isOpen && <div className="category-menu__sub-category-wrapper">
-                {categories.map(childCategory => <CategoryMenuItem category={childCategory} key={childCategory.slug}/>)}
+                {categories
+                    .sort(sortCategoryCallback)
+                    .map(childCategory => <CategoryMenuItem category={childCategory} key={childCategory.slug}/>)}
             </div>}
         </div>;
     }
@@ -63,8 +65,17 @@ class CategoryMenu extends Component {
         const {state} = view;
         const {categoryTree} = state;
 
-        return categoryTree.categories.map(category => <CategoryMenuItem key={category.slug} category={category}/>);
+        return categoryTree.categories
+            .sort(sortCategoryCallback)
+            .map(category => <CategoryMenuItem key={category.slug} category={category}/>);
     }
+}
+
+function sortCategoryCallback(category1, category2) {
+    const categoryDisplayName1 = category1.displayName || category1.name;
+    const categoryDisplayName2 = category2.displayName || category2.name;
+
+    return categoryDisplayName1.toLowerCase() > categoryDisplayName2.toLowerCase() ? 1 : -1;
 }
 
 module.exports.initCategoryMenu = () => {
