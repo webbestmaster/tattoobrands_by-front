@@ -59,7 +59,9 @@ class CartTable extends Component {
                                 <div className="table__product-image"
                                     style={{backgroundImage: 'url(' + product.images[0] + ')'}}/>
                                 <a href={'/product/' + product.slug} className="table__product-name">{product.name}</a>
-                                <p className="table__product-article">Артикул: {product.article}</p>
+                                <p className="table__product-article">
+                                    Артикул: {product.article} {renderProductState(product)}
+                                </p>
                             </td>
                             <td className="table__td">
                                 <input
@@ -116,6 +118,17 @@ function onInputNumberBlur(evt) {
 
     if (value <= 0) {
         input.value = 1;
+    }
+}
+
+function renderProductState(product) {
+    switch (product.state) {
+        case 'expected':
+            return <span className="secondary-color">(ожидается)</span>;
+        case 'under-the-order':
+            return <span className="secondary-color">(под заказ)</span>;
+        default:
+            return null;
     }
 }
 
