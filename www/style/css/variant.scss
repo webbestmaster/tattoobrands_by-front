@@ -27,4 +27,11 @@
         opacity: 1;
         @extend .main-gradient--inverse;
     }
+
+    &.variant-link--not-in-stock,
+    &.variant-link--not-in-stock:hover,
+    &.variant-link--not-in-stock.variant-link--active {
+        background-image: none;
+        background-color: #797979;
+    }
 }

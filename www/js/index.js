@@ -27,6 +27,7 @@ const headerSearchScripts = require('./header-search');
 const searchPageScripts = require('./search-page');
 const categoryPageScripts = require('./category');
 const categoryMenuScripts = require('./category-menu');
+const variantScripts = require('./variant');
 
 $(() => {
     // main part
@@ -73,4 +74,7 @@ $(() => {
 
     // search
     searchPageScripts.initPage();
+
+    // variant
+    variantScripts.showCost();
 });
