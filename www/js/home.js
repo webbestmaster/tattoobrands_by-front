@@ -197,6 +197,7 @@ class Category extends Component {
                 className={
                     'swiper-container category-swiper-container js-category-swiper-container--' + category.slug
                 }>
+                <div className="category-swiper-container__swipe-swiping"/>
                 <div className="swiper-wrapper">
                     {products.map(product =>
                         <div key={product.slug} className="swiper-slide">
@@ -268,6 +269,7 @@ class PromoCategory extends Category {
                 className="category-row__header">Промо товары</a>,
             <div key="category-content"
                 className={'swiper-container category-swiper-container js-category-swiper-container--promo-product'}>
+                <div className="category-swiper-container__swipe-swiping"/>
                 <div className="swiper-wrapper">
                     {products.map(product =>
                         <div key={product.slug} className="swiper-slide">

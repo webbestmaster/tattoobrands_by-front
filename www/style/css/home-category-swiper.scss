@@ -8,6 +8,7 @@
     //height: 100%;
     padding-bottom: 20px;
     position: relative;
+    /*
     &:after {
         content: '';
         width: 120px;
@@ -19,11 +20,27 @@
         z-index: 1;
         pointer-events: none;
     }
+    */
     .swiper-slide {
         width: 240px;
         padding: 0 15px;
         box-sizing: border-box;
     }
+}
+
+.category-swiper-container__swipe-swiping {
+    content: '';
+    width: 120px;
+    height: 100%;
+    background-image: url('./../i/swipe-icon.png'), linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: 73px 34px, center center;
+    background-size: 42px auto, auto auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .category-row__header {
