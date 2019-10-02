@@ -23,6 +23,7 @@
     width: 200px;
 }
 
+/*
 .header__logo {
     background-image: url(./../i/logo.png);
     background-repeat: no-repeat;
@@ -30,6 +31,17 @@
     height: 97px;
     display: block;
     margin: 26px auto 4px;
+}
+*/
+
+.header__logo {
+    background-image: url(./../i/logo.png);
+    background-repeat: no-repeat;
+    width: 228px;
+    height: 126px;
+    display: block;
+    margin: 5px auto 3px;
+    background-size: cover;
 }
 
 .header__slogan {
